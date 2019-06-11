@@ -8,8 +8,10 @@
         "build": "parcel build public/index.html",
         "test:watch": "jest --watch",
         "test": "npm run test:watch",
-        "lint": "eslint .",
-        "lint:fix": "eslint . --fix",
+        "lint": "eslint \"src/**/*.{js,jsx}\"",
+        "lint:quiet": "eslint \"src/**/*.{js,jsx}\" --quiet",
+        "lint:fix": "eslint \"src/**/*.{js,jsx}\" --fix",
+        "format": "prettier \"src/**/*.{js,html}\" --write",
         "dev": "npm start",
         "deploy:netlify": "netlify deploy --dir=./dist -p -m \"$(git log -1 --pretty=%B)\""
     },
@@ -60,6 +62,9 @@
     "eslintConfig": {
         "extends": [
             "eslint:recommended",
+            "plugin:import/errors",
+            "plugin:react/recommended",
+            "plugin:jsx-a11y/recommended",
             "airbnb",
             "prettier",
             "prettier/react",
@@ -68,11 +73,13 @@
         ],
         "plugins": [
             "prettier",
-            "react-hooks"
+            "import",
+            "react-hooks",
+            "jsx-a11y"
         ],
         "parser": "babel-eslint",
         "parserOptions": {
-            "ecmaVersion": 8,
+            "ecmaVersion": 2019,
             "ecmaFeatures": {
                 "experimentalObjectRestSpread": true,
                 "impliedStrict": true,
@@ -81,9 +88,9 @@
             }
         },
         "env": {
+            "es6": true,
             "browser": true,
             "node": true,
-            "jquery": true,
             "jest": true
         },
         "rules": {
@@ -212,6 +219,11 @@
                     "endOfLine": "auto"
                 }
             ]
+        },
+        "settings": {
+            "react": {
+                "version": "detect"
+            }
         }
     },
     "babel": {
