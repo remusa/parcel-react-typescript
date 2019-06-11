@@ -5,12 +5,12 @@
     "main": "index.js",
     "scripts": {
         "start": "parcel public/index.html",
-        "build": "parcel build public/index.html --out-dir build",
-        "test2": "test",
+        "build": "parcel build public/index.html",
+        "test": "jest --watch",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",
-        "test": "cross-env NODE_ENV=test && jest --watch",
-        "dev": "cross-env-shell NODE_ENV=development && npm start"
+        "dev": "npm start",
+        "netlify:deploy": "netlify deploy --dir=./dist -p -m \"$(git log -1 --pretty=%B)\""
     },
     "dependencies": {
         "normalize.css": "^8.0.1",
@@ -40,6 +40,7 @@
         "eslint-plugin-react-hooks": "^1.6.0",
         "jest": "^24.8.0",
         "majestic": "^1.6.0",
+        "netlify-cli": "^2.11.22",
         "node-sass": "^4.12.0",
         "parcel-bundler": "^1.12.3",
         "prettier": "^1.18.2",
