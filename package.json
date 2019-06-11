@@ -11,7 +11,7 @@
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",
         "dev": "npm start",
-        "netlify:deploy": "netlify deploy --dir=./dist -p -m \"$(git log -1 --pretty=%B)\""
+        "deploy:netlify": "netlify deploy --dir=./dist -p -m \"$(git log -1 --pretty=%B)\""
     },
     "dependencies": {
         "normalize.css": "^8.0.1",
