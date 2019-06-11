@@ -4,6 +4,8 @@
 
 *.lnk
 
+dist/
+
 ### Node ###
 # Logs
 logs

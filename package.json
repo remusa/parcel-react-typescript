@@ -1,23 +1,119 @@
 {
-  "name": "parcel-react",
-  "version": "1.0.0",
-  "description": "React with Parcel boilerplate",
-  "main": "index.js",
-  "scripts": {
-    "test": "test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/remusa/parcel-react.git"
-  },
-  "keywords": [
-    "parcel",
-    "react"
-  ],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/remusa/parcel-react/issues"
-  },
-  "homepage": "https://github.com/remusa/parcel-react#readme"
+    "name": "parcel-react",
+    "version": "1.0.0",
+    "description": "React + Parcel boilerplate",
+    "main": "index.js",
+    "scripts": {
+        "start": "parcel public/index.html",
+        "build": "parcel build public/index.html --out-dir build",
+        "test2": "test",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix",
+        "test": "cross-env NODE_ENV=test && jest --watch",
+        "dev": "cross-env-shell NODE_ENV=development && npm start"
+    },
+    "dependencies": {
+        "normalize.css": "^8.0.1",
+        "react": "^16.8.6",
+        "react-dom": "^16.8.6",
+        "react-router-dom": "^5.0.1",
+        "styled-components": "^4.3.1"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.4.5",
+        "@babel/preset-env": "^7.4.5",
+        "@babel/preset-react": "^7.0.0",
+        "@testing-library/react": "^8.0.1",
+        "babel-eslint": "^9.0.0",
+        "babel-jest": "^24.8.0",
+        "babel-preset-env": "^1.7.0",
+        "babel-preset-react": "^6.24.1",
+        "eslint": "^5.16.0",
+        "eslint-config-airbnb": "^17.1.0",
+        "eslint-config-prettier": "^4.3.0",
+        "eslint-config-wesbos": "0.0.19",
+        "eslint-plugin-html": "^5.0.5",
+        "eslint-plugin-import": "^2.17.3",
+        "eslint-plugin-jsx-a11y": "^6.2.1",
+        "eslint-plugin-prettier": "^3.1.0",
+        "eslint-plugin-react": "^7.13.0",
+        "eslint-plugin-react-hooks": "^1.6.0",
+        "jest": "^24.8.0",
+        "majestic": "^1.6.0",
+        "node-sass": "^4.12.0",
+        "parcel-bundler": "^1.12.3",
+        "prettier": "^1.18.2",
+        "prop-types": "^15.7.2",
+        "react-test-renderer": "^16.8.6",
+        "sass": "^1.21.0"
+    },
+    "jest": {
+        "setupFilesAfterEnv": [
+            "<rootDir>/src/jest.setup.js"
+        ],
+        "testPathIgnorePatterns": [
+            "<rootDir>/node_modules/"
+        ]
+    },
+    "babel": {
+        "presets": [
+            "@babel/preset-env",
+            "@babel/preset-react"
+        ],
+        "env": {
+            "development": {
+                "plugins": [
+                    [
+                        "styled-components",
+                        {
+                            "ssr": true,
+                            "displayName": true
+                        }
+                    ]
+                ]
+            },
+            "production": {
+                "plugins": [
+                    [
+                        "styled-components",
+                        {
+                            "ssr": true,
+                            "displayName": true
+                        }
+                    ]
+                ]
+            },
+            "test": {
+                "plugins": [
+                    [
+                        "styled-components",
+                        {
+                            "ssr": true,
+                            "displayName": true
+                        }
+                    ]
+                ]
+            }
+        }
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/remusa/parcel-react.git"
+    },
+    "keywords": [
+        "parcel",
+        "react"
+    ],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/remusa/parcel-react/issues"
+    },
+    "homepage": "https://github.com/remusa/parcel-react#readme",
+    "browserslist": [
+        ">0.2%",
+        "not dead",
+        "not ie <= 11",
+        "not op_mini all"
+    ]
 }
