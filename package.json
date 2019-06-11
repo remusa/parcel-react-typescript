@@ -1,0 +1,23 @@
+{
+  "name": "parcel-react",
+  "version": "1.0.0",
+  "description": "React with Parcel boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/remusa/parcel-react.git"
+  },
+  "keywords": [
+    "parcel",
+    "react"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/remusa/parcel-react/issues"
+  },
+  "homepage": "https://github.com/remusa/parcel-react#readme"
+}
