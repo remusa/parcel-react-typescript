@@ -5,6 +5,7 @@
 *.lnk
 
 dist/
+build/
 
 ### Node ###
 # Logs
