@@ -6,6 +6,8 @@
 
 dist/
 build/
+.netlify/
+.firebase/
 
 ### Node ###
 # Logs

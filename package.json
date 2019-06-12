@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "start": "parcel public/index.html",
-        "build": "parcel build public/index.html",
+        "build": "parcel build public/index.html -d build",
         "test:watch": "jest --watch",
         "test": "npm run test:watch",
         "lint": "eslint \"src/**/*.{js,jsx}\"",
@@ -13,8 +13,13 @@
         "lint:fix": "eslint \"src/**/*.{js,jsx}\" --fix",
         "format": "prettier \"src/**/*.{js,html}\" --write",
         "dev": "export NODE_ENV=development && npm start",
-        "deploy": "npm run deploy:netlify",
-        "deploy:netlify": "npm run build && netlify deploy --dir=./dist -p -m \"$(git log -1 --pretty=%B)\""
+        "deploy": "npm run build && npm run deploy:all",
+        "deploy:all": "npm run netlify:deploy & firebase deploy & now",
+        "netlify:deploy": "netlify deploy --dir=./build -p -m \"$(git log -1 --pretty=%B)\"",
+        "now-build": "npm run build",
+        "firebase:login": "firebase login",
+        "firebase:init": "firebase init",
+        "firebase:deploy": "firebase deploy"
     },
     "dependencies": {
         "normalize.css": "^8.0.1",
