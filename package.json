@@ -12,7 +12,7 @@
         "lint:quiet": "eslint \"src/**/*.{js,jsx}\" --quiet",
         "lint:fix": "eslint \"src/**/*.{js,jsx}\" --fix",
         "format": "prettier \"src/**/*.{js,html}\" --write",
-        "dev": "npm start",
+        "dev": "export NODE_ENV=development && npm start",
         "deploy": "npm run deploy:netlify",
         "deploy:netlify": "npm run build && netlify deploy --dir=./dist -p -m \"$(git log -1 --pretty=%B)\""
     },
