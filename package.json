@@ -10,8 +10,10 @@
         "test": "npm run test:watch",
         "lint": "eslint \"src/**/*.{js,jsx}\"",
         "lint:quiet": "eslint \"src/**/*.{js,jsx}\" --quiet",
-        "lint:fix": "eslint \"src/**/*.{js,jsx}\" --fix",
-        "format": "prettier \"src/**/*.{js,html}\" --write",
+        "lint:fix": "eslint \"src/**/*.{js,jsx}\" --fix && echo 'Lint complete.'",
+        "lint:fix2": "eslint . --fix && echo 'Lint complete.'",
+        "format": "prettier \"src/**/*.{js,html}\" --write && echo 'Format complete.'",
+        "pretty-quick": "pretty-quick",
         "dev": "export NODE_ENV=development && npm start",
         "deploy": "npm run build && npm run deploy:all",
         "deploy:all": "npm run netlify:deploy & firebase deploy & now",
@@ -53,6 +55,7 @@
         "node-sass": "^4.12.0",
         "parcel-bundler": "^1.12.3",
         "prettier": "^1.18.2",
+        "pretty-quick": "^1.11.0",
         "prop-types": "^15.7.2",
         "react-test-renderer": "^16.8.6",
         "sass": "^1.21.0"
@@ -86,6 +89,7 @@
         "parser": "babel-eslint",
         "parserOptions": {
             "ecmaVersion": 2019,
+            "sourceType": "module",
             "ecmaFeatures": {
                 "experimentalObjectRestSpread": true,
                 "impliedStrict": true,
@@ -95,6 +99,7 @@
         },
         "env": {
             "es6": true,
+            "commonjs": true,
             "browser": true,
             "node": true,
             "jest": true
