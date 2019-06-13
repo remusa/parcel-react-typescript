@@ -3,9 +3,14 @@
     "version": "1.0.1",
     "description": "React + Parcel boilerplate",
     "main": "index.js",
+    "//": {
+        "comment": {
+            "build": "NODE_ENV=production parcel build dist/index.html --public-url ./"
+        }
+    },
     "scripts": {
-        "start": "parcel public/index.html",
-        "build": "parcel build public/index.html -d build",
+        "start": "NODE_ENV=development parcel public/index.html --open",
+        "build": "NODE_ENV=production parcel build public/index.html -d build",
         "test:watch": "jest --watch",
         "test": "npm run test:watch",
         "lint": "eslint \"src/**/*.{js,jsx}\"",
@@ -35,6 +40,7 @@
         "@babel/preset-env": "^7.4.5",
         "@babel/preset-react": "^7.0.0",
         "@testing-library/react": "^8.0.1",
+        "autoprefixer": "^9.6.0",
         "babel-eslint": "^9.0.0",
         "babel-jest": "^24.8.0",
         "babel-preset-env": "^1.7.0",
@@ -67,6 +73,20 @@
         "setupFilesAfterEnv": [
             "@testing-library/react/cleanup-after-each"
         ]
+    },
+    "postcss": {
+        "modules": false,
+        "plugins": {
+            "autoprefixer": {
+                "browsers": [
+                    ">1%",
+                    "last 4 versions",
+                    "Firefox ESR",
+                    "not ie < 9"
+                ],
+                "flexbox": "no-2009"
+            }
+        }
     },
     "eslintConfig": {
         "extends": [
