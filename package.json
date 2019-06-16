@@ -9,10 +9,10 @@
         }
     },
     "scripts": {
-        "start": "NODE_ENV=development parcel public/index.html --open",
+        "start": "cross-env-shell NODE_ENV=development parcel public/index.html --open",
         "build": "NODE_ENV=production parcel build public/index.html -d build",
+        "test": "cross-env NODE_ENV=test npm run test:watch",
         "test:watch": "jest --watch",
-        "test": "npm run test:watch",
         "lint": "eslint \"src/**/*.{js,jsx}\"",
         "lint:quiet": "eslint \"src/**/*.{js,jsx}\" --quiet",
         "lint:fix": "eslint \"src/**/*.{js,jsx}\" --fix && echo 'Lint complete.'",
