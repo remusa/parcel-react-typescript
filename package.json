@@ -10,7 +10,8 @@
     },
     "scripts": {
         "start": "cross-env-shell NODE_ENV=development parcel public/index.html --open",
-        "build": "NODE_ENV=production parcel build public/index.html -d build",
+        "build": "parcel build public/index.html -d build",
+        "build2": "cross-env NODE_ENV=production parcel build public/index.html -d build",
         "test": "cross-env NODE_ENV=test npm run test:watch",
         "test:watch": "jest --watch",
         "lint": "eslint \"src/**/*.{js,jsx}\"",
@@ -79,7 +80,7 @@
         "modules": false,
         "plugins": {
             "autoprefixer": {
-                "browsers": [
+                "overrideBrowserslist": [
                     ">1%",
                     "last 4 versions",
                     "Firefox ESR",
