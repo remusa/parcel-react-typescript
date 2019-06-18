@@ -269,42 +269,7 @@
         ],
         "plugins": [
             "@babel/plugin-proposal-class-properties"
-        ],
-        "env": {
-            "development": {
-                "plugins": [
-                    [
-                        "styled-components",
-                        {
-                            "ssr": true,
-                            "displayName": true
-                        }
-                    ]
-                ]
-            },
-            "production": {
-                "plugins": [
-                    [
-                        "styled-components",
-                        {
-                            "ssr": true,
-                            "displayName": true
-                        }
-                    ]
-                ]
-            },
-            "test": {
-                "plugins": [
-                    [
-                        "styled-components",
-                        {
-                            "ssr": true,
-                            "displayName": true
-                        }
-                    ]
-                ]
-            }
-        }
+        ]
     },
     "repository": {
         "type": "git",
