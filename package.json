@@ -20,7 +20,7 @@
         "lint:fix2": "eslint . --fix && echo 'Lint complete.'",
         "format": "prettier \"src/**/*.{js,html}\" --write && echo 'Format complete.'",
         "pretty-quick": "pretty-quick",
-        "dev": "export NODE_ENV=development && npm start",
+        "dev": "cross-env NODE_ENV=development npm start",
         "deploy": "npm run build && npm run deploy:all",
         "deploy:all": "npm run netlify:deploy & firebase deploy & now",
         "netlify:deploy": "netlify deploy --dir=./build -p -m \"$(git log -1 --pretty=%B)\"",
@@ -31,13 +31,16 @@
     },
     "dependencies": {
         "normalize.css": "^8.0.1",
+        "nprogress": "^0.2.0",
         "react": "^16.8.6",
         "react-dom": "^16.8.6",
         "react-router-dom": "^5.0.1",
+        "react-spinners": "^0.5.4",
         "styled-components": "^4.3.1"
     },
     "devDependencies": {
         "@babel/core": "^7.4.5",
+        "@babel/plugin-proposal-class-properties": "^7.4.4",
         "@babel/preset-env": "^7.4.5",
         "@babel/preset-react": "^7.0.0",
         "@testing-library/react": "^8.0.1",
@@ -263,6 +266,9 @@
         "presets": [
             "@babel/preset-env",
             "@babel/preset-react"
+        ],
+        "plugins": [
+            "@babel/plugin-proposal-class-properties"
         ],
         "env": {
             "development": {

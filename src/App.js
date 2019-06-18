@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
-import 'normalize.css'
 import Footer from './components/Footer'
 import Header from './components/Header'
 import Login from './components/Login'
 import Main from './components/Main'
 import Register from './components/Register'
+import nprogress from 'nprogress'
+import 'normalize.css'
 import './index.scss'
+import '../static/nprogress.css'
 
 const AppStyles = styled.div`
     text-align: center;
@@ -25,7 +27,11 @@ const AppStyles = styled.div`
 `
 
 class App extends Component {
+    nprogress.start()
+
     render() {
+        nprogress.done()
+
         return (
             <AppStyles className='App'>
                 <Header />
