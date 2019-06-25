@@ -45,7 +45,7 @@
         "@babel/preset-react": "^7.0.0",
         "@testing-library/react": "^8.0.1",
         "autoprefixer": "^9.6.0",
-        "babel-eslint": "^10.0.1",
+        "babel-eslint": "^9.0.0",
         "babel-jest": "^24.8.0",
         "babel-preset-env": "^1.7.0",
         "babel-preset-react": "^6.24.1",
@@ -55,12 +55,11 @@
         "eslint-config-prettier": "^4.3.0",
         "eslint-config-wesbos": "0.0.19",
         "eslint-plugin-html": "^5.0.5",
-        "eslint-plugin-import": "^2.17.3",
-        "eslint-plugin-jest": "^22.7.1",
+        "eslint-plugin-import": "^2.18.0",
         "eslint-plugin-jsx-a11y": "^6.2.1",
         "eslint-plugin-prettier": "^3.1.0",
-        "eslint-plugin-react": "^7.13.0",
-        "eslint-plugin-react-hooks": "^1.6.0",
+        "eslint-plugin-react": "^7.14.2",
+        "eslint-plugin-react-hooks": "^1.6.1",
         "jest": "^24.8.0",
         "jest-dom": "^3.5.0",
         "majestic": "^1.6.0",
@@ -98,52 +97,7 @@
     "eslintConfig": {
         "extends": [
             "wesbos"
-        ],
-        "parser": "babel-eslint",
-        "parserOptions": {
-            "ecmaVersion": 2019,
-            "sourceType": "module",
-            "ecmaFeatures": {
-                "experimentalObjectRestSpread": true,
-                "impliedStrict": true,
-                "classes": true,
-                "jsx": true
-            }
-        },
-        "env": {
-            "es6": true,
-            "commonjs": true,
-            "browser": true,
-            "node": true,
-            "jest": true
-        },
-        "rules": {
-            "prettier/prettier": [
-                "error",
-                {
-                    "disableLanguages": [
-                        "markdown",
-                        "md"
-                    ],
-                    "eslintIntegration": true,
-                    "stylelintIntegration": false,
-                    "trailingComma": "es5",
-                    "singleQuote": true,
-                    "printWidth": 100,
-                    "semi": false,
-                    "jsxSingleQuote": true,
-                    "tabWidth": 4,
-                    "useTabs": false,
-                    "jsxBracketSameLine": false,
-                    "endOfLine": "auto"
-                }
-            ]
-        },
-        "settings": {
-            "react": {
-                "version": "detect"
-            }
-        }
+        ]
     },
     "babel": {
         "presets": [
