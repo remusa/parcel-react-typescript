@@ -17,7 +17,9 @@ it('full app rendering/navigating', () => {
         </Router>
     )
 
-    expect(getByTestId('heading')).toHaveTextContent('React + TypeScript + Parcel Boilerplate')
+    expect(getByTestId('heading')).toHaveTextContent(
+        'React + TypeScript + Parcel Boilerplate'
+    )
 
     fireEvent.click(getByText(/log in/i))
     expect(getByTestId('login-page')).toHaveTextContent('Login')

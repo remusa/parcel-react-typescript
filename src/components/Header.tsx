@@ -1,6 +1,6 @@
-import styled from '@emotion/styled'
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import styled from 'styled-components'
 import useWindowDimensions from '../hooks/useWindowDimensions'
 
 const HeaderStyles = styled.header`
