@@ -72,7 +72,9 @@ const Register: React.FC<Props> = () => (
                                 <i className='fa fa-check'></i>
                             </span>
                         </div>
-                        <p className='help is-success'>This username is available</p>
+                        <p className='help is-success'>
+                            This username is available
+                        </p>
                     </label>
                 </div>
 
