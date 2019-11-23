@@ -62,7 +62,6 @@
         "identity-obj-proxy": "^3.0.0",
         "jest": "^24.9.0",
         "jest-axe": "^3.2.0",
-        "jest-dom": "^4.0.0",
         "jest-extended": "^0.11.2",
         "netlify-cli": "^2.11.22",
         "parcel-bundler": "^1.12.3",
@@ -70,7 +69,6 @@
         "pretty-quick": "^2.0.1",
         "prop-types": "^15.7.2",
         "react-test-renderer": "^16.12.0",
-        "react-testing-library": "^8.0.1",
         "sass": "^1.21.0",
         "ts-jest": "^24.2.0",
         "typescript": "^3.7.2"
@@ -97,10 +95,6 @@
         ],
         "testPathIgnorePatterns": [
             "<rootDir>/node_modules/"
-        ],
-        "setupFiles": [
-            "jest-axe/extend-expect",
-            "jest-dom/extend-expect"
         ],
         "setupFilesAfterEnv": [
             "@testing-library/jest-dom/extend-expect"
