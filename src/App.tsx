@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { Route, Switch, withRouter } from 'react-router-dom'
 import Footer from './components/Footer'
 import Header from './components/Header'
 import './index.scss'
@@ -31,25 +31,32 @@ const MainStyles = styled.div`
     height: 100%;
 `
 
-const App: React.FC = () => {
-    return (
-        <Router>
-            <LayoutStyles>
-                <Header />
+const LocationDisplay = withRouter(({ location }) => (
+    <div data-testid='location-display'>{location.pathname}</div>
+))
 
-                <MainStyles>
-                    <Switch>
-                        <Route path='/' exact component={Home} />
-                        <Route path='/login' exact component={Login} />
-                        <Route path='/register' exact component={Register} />
-                        <Route path='/' render={() => <div>404</div>} />
-                    </Switch>
-                </MainStyles>
+const App: React.FC = () => (
+    <LayoutStyles>
+        <Header />
 
-                <Footer />
-            </LayoutStyles>
-        </Router>
-    )
-}
+        <MainStyles>
+            <Switch>
+                <Route path='/' exact component={Home} />
+                <Route path='/login' exact component={Login} />
+                <Route path='/register' exact component={Register} />
+                <Route
+                    path='/'
+                    render={() => (
+                        <div>
+                            <h1 data-testid="not-found">404 Not Found</h1>
+                        </div>
+                    )}
+                />
+            </Switch>
+        </MainStyles>
+
+        <Footer />
+    </LayoutStyles>
+)
 
 export default App

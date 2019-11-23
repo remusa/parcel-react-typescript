@@ -12,6 +12,8 @@ const Login: React.FC<Props> = () => (
     <LoginStyles className='section'>
         <div className='columns'>
             <div className='column is-4 is-offset-4'>
+                <h2 data-testid="login-page">Login</h2>
+
                 <div className='field'>
                     <label className='label' htmlFor='email'>
                         <p className='control has-icons-left has-icons-right'>
@@ -23,8 +25,8 @@ const Login: React.FC<Props> = () => (
                                 placeholder='Email'
                             />
 
-                            <span class='icon is-small is-left'>
-                                <i class='fas fa-envelope'></i>
+                            <span className='icon is-small is-left'>
+                                <i className='fas fa-envelope'></i>
                             </span>
 
                             <span className='icon is-small is-right'>
@@ -33,7 +35,7 @@ const Login: React.FC<Props> = () => (
                         </p>
                     </label>
                 </div>
-                
+
                 <div className='field'>
                     <label className='label' htmlFor='password'>
                         <p className='control has-icons-left'>
@@ -45,8 +47,8 @@ const Login: React.FC<Props> = () => (
                                 placeholder='Password'
                             />
 
-                            <span class='icon is-small is-left'>
-                                <i class='fas fa-lock'></i>
+                            <span className='icon is-small is-left'>
+                                <i className='fas fa-lock'></i>
                             </span>
                         </p>
                     </label>

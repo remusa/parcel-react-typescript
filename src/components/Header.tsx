@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
 import React, { useState } from 'react'
-// import Header from 'react-bulma-components/lib/components/header'
 import { NavLink } from 'react-router-dom'
 import useWindowDimensions from '../hooks/useWindowDimensions'
 
@@ -34,9 +33,17 @@ const Header: React.FC<Props> = () => {
 
     return (
         <HeaderStyles>
-            <nav className='navbar' role='navigation' aria-label='main navigation'>
+            <nav
+                className='navbar'
+                role='navigation'
+                aria-label='main navigation'
+            >
                 <div className='navbar-brand'>
-                    <NavLink className='navbar-item' href='https://bulma.io' to='/'>
+                    <NavLink
+                        className='navbar-item'
+                        href='https://bulma.io'
+                        to='/'
+                    >
                         <img
                             src='https://bulma.io/images/bulma-logo.png'
                             alt='logo'
@@ -65,7 +72,9 @@ const Header: React.FC<Props> = () => {
                 <div
                     id='navbarBasicExample'
                     className={
-                        width > MAX_WIDTH || showHeader ? 'navbar-menu is-active' : 'navbar-menu'
+                        width > MAX_WIDTH || showHeader
+                            ? 'navbar-menu is-active'
+                            : 'navbar-menu'
                     }
                 >
                     <div className='navbar-start'>
@@ -93,11 +102,17 @@ const Header: React.FC<Props> = () => {
                     <div className='navbar-end'>
                         <div className='navbar-item'>
                             <div className='buttons'>
-                                <NavLink className='button is-light' to='/login'>
+                                <NavLink
+                                    className='button is-light'
+                                    to='/login'
+                                >
                                     Log in
                                 </NavLink>
 
-                                <NavLink className='button is-primary' to='/register'>
+                                <NavLink
+                                    className='button is-primary'
+                                    to='/register'
+                                >
                                     <strong>Sign up</strong>
                                 </NavLink>
                             </div>

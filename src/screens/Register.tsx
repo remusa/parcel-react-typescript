@@ -11,6 +11,8 @@ const Register: React.FC<Props> = () => (
     <RegisterStyles className='section'>
         <div className='columns'>
             <div className='column is-4 is-offset-4'>
+                <h2 data-testid="signup-page">Sign Up</h2>
+
                 <div className='field'>
                     <label className='label' htmlFor='username'>
                         Username
@@ -31,7 +33,9 @@ const Register: React.FC<Props> = () => (
                                 <i className='fa fa-check'></i>
                             </span>
                         </div>
-                        <p className='help is-success'>This username is available</p>
+                        <p className='help is-success'>
+                            This username is available
+                        </p>
                     </label>
                 </div>
 
@@ -55,7 +59,6 @@ const Register: React.FC<Props> = () => (
                                 <i className='fa fa-warning'></i>
                             </span>
                         </div>
-
                         <p className='help is-danger'>This email is invalid</p>
                     </label>
                 </div>
@@ -71,8 +74,8 @@ const Register: React.FC<Props> = () => (
                                 placeholder='Password'
                             />
 
-                            <span class='icon is-small is-left'>
-                                <i class='fas fa-lock'></i>
+                            <span className='icon is-small is-left'>
+                                <i className='fas fa-lock'></i>
                             </span>
                         </p>
                     </label>

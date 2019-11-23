@@ -7,18 +7,20 @@ const HomeStyles = styled.section`
 
 interface Props {}
 
-const Home: React.FC<Props> = () => {
-    return (
-        <HomeStyles className='hero is-primary'>
-            <div className='hero-body'>
-                <div className='container'>
-                    <h1 className='title'>React + TypeScript + Parcel Boilerplate</h1>
+const Home: React.FC<Props> = () => (
+    <HomeStyles className='hero is-primary'>
+        <div className='hero-body'>
+            <div className='container'>
+                <h1 className='title' data-testid="heading">
+                    React + TypeScript + Parcel Boilerplate
+                </h1>
 
-                    <h2 className='subtitle'>A simple boilerplate for React apps</h2>
-                </div>
+                <h2 className='subtitle'>
+                    A simple boilerplate for React apps
+                </h2>
             </div>
-        </HomeStyles>
-    )
-}
+        </div>
+    </HomeStyles>
+)
 
 export default Home
