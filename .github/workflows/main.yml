@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
       with:
-        fetch-depth: 1
+        ref: master
 
     - name: Use Node.js 10
       uses: actions/setup-node@v1
