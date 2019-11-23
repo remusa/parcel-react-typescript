@@ -10,7 +10,11 @@ const ToggleWrapper = styled.span`
     flex-flow: row;
     justify-content: center;
     align-items: center;
-    /* max-width: 50px; */
+    /* width: 50px; */
+
+    .icon {
+        padding-top: 28px;
+    }
 
     .react-switch-checkbox {
         height: 0;
@@ -71,7 +75,7 @@ const Toggle: React.FC<Props> = ({
 
     return (
         <ToggleWrapper>
-            <div>🌙</div>
+            <div className='icon'>🌙</div>
             <div>
                 <input
                     checked={isOn}
@@ -89,7 +93,7 @@ const Toggle: React.FC<Props> = ({
                     <span className={`react-switch-button`} />
                 </label>
             </div>
-            <div>☀️</div>
+            <div className='icon'>☀️</div>
         </ToggleWrapper>
     )
 }
