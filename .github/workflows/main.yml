@@ -1,6 +1,9 @@
 name: CI
 
-on: [push]
+on:
+    push:
+        branches:
+            - master
 
 jobs:
     build:
@@ -17,25 +20,27 @@ jobs:
                   node-version: 10.x
 
             - name: Cache NPM dependencies
-              id: cache
               uses: actions/cache@v1
+              id: cache
               with:
-                  path: ~/.npm
-                  key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+                  path: node_modules
+                  key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
                   restore-keys: |
-                    ${{ runner.os }}-node-
+                      ${{ runner.OS }}-build-${{ env.cache-name }}-
+                      ${{ runner.OS }}-build-
+                      ${{ runner.OS }}-
 
             - name: Install NPM dependencies
               if: steps.cache.outputs.cache-hit != 'true'
               run: npm install
 
-            - name: Run tests
+            - name: Test
               run: npm run test
 
             - name: Build
               run: npm run build
 
-            - name: Deploy to Netlify
+            - name: Deploy
               run: npm run deploy
 
             - name: Logs for Netlify
