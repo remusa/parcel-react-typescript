@@ -3,53 +3,40 @@
     "version": "1.0.1",
     "description": "React + Parcel boilerplate",
     "main": "index.js",
-    "//": {
-        "comment": {
-            "build": "NODE_ENV=production parcel build dist/index.html --public-url ./"
-        }
-    },
     "scripts": {
-        "start": "cross-env-shell NODE_ENV=development parcel public/index.html --open",
-        "build": "parcel build public/index.html -d build",
-        "build2": "cross-env NODE_ENV=production parcel build public/index.html -d build",
-        "test": "cross-env NODE_ENV=test npm run test:watch",
-        "test:watch": "cross-env NODE_ENV=test jest --silent --watch",
-        "test:coverage": "cross-env NODE_ENV=test jest --silent --coverage",
-        "lint": "eslint \"src/**/*.{js,jsx}\"",
-        "lint:quiet": "eslint \"src/**/*.{js,jsx}\" --quiet",
-        "lint:fix": "eslint \"src/**/*.{js,jsx}\" --fix && echo 'Lint complete.'",
-        "lint:fix2": "eslint . --fix && echo 'Lint complete.'",
-        "format": "prettier \"src/**/*.{js,html}\" --write && echo 'Format complete.'",
-        "pretty-quick": "pretty-quick",
-        "dev": "cross-env NODE_ENV=development npm start",
-        "deploy": "npm run build && npm run deploy:all",
-        "deploy:all": "npm run netlify:deploy & firebase deploy & now",
-        "netlify:deploy": "netlify deploy --dir=./build -p -m \"$(git log -1 --pretty=%B)\"",
-        "firebase:login": "firebase login",
-        "firebase:init": "firebase init",
-        "firebase:deploy": "firebase deploy"
+        "start": "parcel public/index.html --open",
+        "build": "cross-env NODE_ENV=production rimraf ./dist && yarn run lint:fix && parcel build public/index.html",
+        "dev": "cross-env NODE_ENV=development yarn run start",
+        "test": "cross-env NODE_ENV=test jest",
+        "test:watch": "cross-env NODE_ENV=test jest --watch --silent",
+        "test:coverage": "cross-env NODE_ENV=test jest --coverage --silent",
+        "lint": "eslint \"src/**/*.{js,jsx,ts,tsx,json,html}\"",
+        "lint:quiet": "eslint \"src/**/*.{js,jsx,ts,tsx,json,html}\" --quiet",
+        "lint:fix": "eslint \"src/**/*.{js,jsx,ts,tsx,json,html}\" --fix && echo 'Lint complete.'",
+        "prettify": "pretty-quick && echo 'Format complete.'",
+        "deploy": "yarn run build && yarn run netlify:deploy",
+        "netlify:deploy": "netlify deploy --dir=./build -p -m \"$(git log -1 --pretty=%B)\""
     },
     "dependencies": {
-        "normalize.css": "^8.0.1",
-        "nprogress": "^0.2.0",
+        "@emotion/core": "^10.0.22",
+        "@emotion/styled": "^10.0.23",
         "react": "^16.8.6",
+        "react-bulma-components": "^3.1.3",
         "react-dom": "^16.8.6",
-        "react-router-dom": "^5.0.1",
-        "react-spinners": "^0.5.4",
-        "styled-components": "^4.3.1"
+        "react-router-dom": "^5.0.1"
     },
     "devDependencies": {
         "@babel/core": "^7.4.5",
-        "@babel/plugin-proposal-class-properties": "^7.4.4",
         "@babel/preset-env": "^7.4.5",
         "@babel/preset-react": "^7.0.0",
         "@testing-library/react": "^8.0.1",
         "autoprefixer": "^9.6.0",
         "babel-eslint": "^9.0.0",
         "babel-jest": "^24.8.0",
+        "babel-plugin-transform-remove-console": "^6.9.4",
         "babel-preset-env": "^1.7.0",
         "babel-preset-react": "^6.24.1",
-        "cross-env": "^5.2.0",
+        "cross-env": "^6.0.3",
         "eslint": "^5.16.0",
         "eslint-config-airbnb": "^17.1.0",
         "eslint-config-prettier": "^4.3.0",
@@ -61,13 +48,10 @@
         "eslint-plugin-react": "^7.14.2",
         "eslint-plugin-react-hooks": "^1.6.1",
         "jest": "^24.8.0",
-        "jest-dom": "^3.5.0",
-        "majestic": "^1.6.0",
         "netlify-cli": "^2.11.22",
-        "node-sass": "^4.12.0",
         "parcel-bundler": "^1.12.3",
-        "prettier": "^1.18.2",
-        "pretty-quick": "^1.11.0",
+        "prettier": "^1.19.1",
+        "pretty-quick": "^2.0.1",
         "prop-types": "^15.7.2",
         "react-test-renderer": "^16.8.6",
         "sass": "^1.21.0"
@@ -80,6 +64,67 @@
             "@testing-library/react/cleanup-after-each"
         ]
     },
+    "eslintConfig": {
+        "extends": [
+            "wesbos"
+        ],
+        "settings": {
+            "import/resolver": {
+                "node": {
+                    "extensions": [
+                        ".js",
+                        ".jsx",
+                        ".ts",
+                        ".tsx"
+                    ]
+                }
+            }
+        },
+        "rules": {
+            "prettier/prettier": [
+                "error",
+                {
+                    "trailingComma": "es5",
+                    "singleQuote": true,
+                    "printWidth": 80,
+                    "tabWidth": 4,
+                    "semi": false,
+                    "jsxSingleQuote": true,
+                    "useTabs": false,
+                    "jsxBracketSameLine": false,
+                    "endOfLine": "auto"
+                }
+            ],
+            "react/jsx-filename-extension": [
+                {
+                    "extensions": [
+                        ".ts",
+                        ".tsx"
+                    ]
+                }
+            ]
+        }
+    },
+    "babel": {
+        "presets": [
+            "@babel/preset-env",
+            "@babel/preset-react"
+        ],
+        "plugins": [],
+        "env": {
+            "production": {
+                "plugins": [
+                    "transform-remove-console"
+                ]
+            }
+        }
+    },
+    "husky": {
+        "hooks": {
+            "pre-push": "yarn run lint:fix",
+            "...": "..."
+        }
+    },
     "postcss": {
         "modules": false,
         "plugins": {
@@ -90,23 +135,10 @@
                     "Firefox ESR",
                     "not ie < 9"
                 ],
-                "flexbox": "no-2009"
+                "flexbox": "no-2009",
+                "grid": true
             }
         }
-    },
-    "eslintConfig": {
-        "extends": [
-            "wesbos"
-        ]
-    },
-    "babel": {
-        "presets": [
-            "@babel/preset-env",
-            "@babel/preset-react"
-        ],
-        "plugins": [
-            "@babel/plugin-proposal-class-properties"
-        ]
     },
     "repository": {
         "type": "git",
@@ -115,14 +147,15 @@
     "keywords": [
         "parcel",
         "react",
+        "typescript",
         "boilerplate"
     ],
-    "author": "",
+    "author": "RMS",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/remusa/parcel-react/issues"
+        "url": "https://github.com/remusa/parcel-react-typescript/issues"
     },
-    "homepage": "https://github.com/remusa/parcel-react#readme",
+    "homepage": "https://github.com/remusa/parcel-react-typescript#readme",
     "browserslist": [
         ">0.2%",
         "not dead",
