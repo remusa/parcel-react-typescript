@@ -20,16 +20,16 @@ jobs:
               with:
                   node-version: 12.x
 
-            - name: Cache NPM dependencies
-              uses: actions/cache@v1
-              id: cache
-              with:
-                  path: node_modules
-                  key: ${{ runner.OS }}-build-${{ hashFiles('*/**/package-lock.json') }}
-                  restore-keys: |
-                      ${{ runner.OS }}-build-${{ env.cache-name }}-
-                      ${{ runner.OS }}-build-
-                      ${{ runner.OS }}-
+            # - name: Cache NPM dependencies
+            #   uses: actions/cache@v1
+            #   id: cache
+            #   with:
+            #       path: node_modules
+            #       key: ${{ runner.OS }}-build-${{ hashFiles('*/**/package-lock.json') }}
+            #       restore-keys: |
+            #           ${{ runner.OS }}-build-${{ env.cache-name }}-
+            #           ${{ runner.OS }}-build-
+            #           ${{ runner.OS }}-
 
             - name: Install NPM dependencies
               #   if: steps.cache.outputs.cache-hit != 'true'
