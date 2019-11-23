@@ -1,8 +1,9 @@
 # Parcel + React Boilerplate
 
 * Parcel
+* TypeScript
 * React-Router
 * ESlint + Prettier
-* Styled Components + SASS
+* Emotion + SASS
 * Jest + React Testing Library
-* Deploy to Netlify, Firebase and Now
+* Netlify
