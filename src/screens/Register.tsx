@@ -11,7 +11,7 @@ const Register: React.FC<Props> = () => (
     <RegisterStyles className='section'>
         <div className='columns'>
             <div className='column is-4 is-offset-4'>
-                <h2 data-testid="signup-page">Sign Up</h2>
+                <h2 data-testid='signup-page'>Sign Up</h2>
 
                 <div className='field'>
                     <label className='label' htmlFor='username'>
@@ -33,9 +33,7 @@ const Register: React.FC<Props> = () => (
                                 <i className='fa fa-check'></i>
                             </span>
                         </div>
-                        <p className='help is-success'>
-                            This username is available
-                        </p>
+                        <p className='help is-success'>This username is available</p>
                     </label>
                 </div>
 

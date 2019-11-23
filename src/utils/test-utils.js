@@ -3,8 +3,13 @@ import { render } from '@testing-library/react'
 // import { ThemeProvider } from 'my-ui-lib'
 // import { TranslationProvider } from 'my-i18n-lib'
 // import defaultStrings from 'i18n/en-x-default'
+import PropTypes from 'prop-types'
 
 const AllTheProviders = ({ children }) => <>{children}</>
+
+AllTheProviders.propTypes = {
+    children: PropTypes.element,
+}
 
 // const AllTheProviders = ({ children }) => {
 //   return (
@@ -16,8 +21,7 @@ const AllTheProviders = ({ children }) => <>{children}</>
 //   )
 // }
 
-const customRender = (ui, options) =>
-    render(ui, { wrapper: AllTheProviders, ...options })
+const customRender = (ui, options) => render(ui, { wrapper: AllTheProviders, ...options })
 
 // re-export everything
 export * from '@testing-library/react'

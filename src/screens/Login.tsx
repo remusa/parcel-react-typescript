@@ -12,7 +12,7 @@ const Login: React.FC<Props> = () => (
     <LoginStyles className='section'>
         <div className='columns'>
             <div className='column is-4 is-offset-4'>
-                <h2 data-testid="login-page">Login</h2>
+                <h2 data-testid='login-page'>Login</h2>
 
                 <div className='field'>
                     <label className='label' htmlFor='email'>
