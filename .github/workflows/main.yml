@@ -17,14 +17,16 @@ jobs:
                   node-version: 10.x
 
             - name: Cache NPM dependencies
+              id: cache
               uses: actions/cache@v1
               with:
                   path: ~/.npm
-                  key: ${{ runner.os }}-node-${{ hashFiles('/package-lock.json') }}
+                  key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
                   restore-keys: |
-                      ${{ runner.os }}-node-
+                    ${{ runner.os }}-node-
 
             - name: Install NPM dependencies
+              if: steps.cache.outputs.cache-hit != 'true'
               run: npm install
 
             - name: Run tests
