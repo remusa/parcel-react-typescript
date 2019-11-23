@@ -3,8 +3,6 @@ import React from 'react'
 
 const FooterStyles = styled.div`
     grid-area: footer;
-
-    width: 100vw;
 `
 
 interface Props {}

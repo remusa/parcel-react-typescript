@@ -2,7 +2,8 @@ import styled from '@emotion/styled'
 import React from 'react'
 
 const LoginStyles = styled.section`
-    grid-area: main;
+    /* height: 100%; */
+    text-align: center;
 `
 
 interface Props {}
@@ -22,8 +23,8 @@ const Login: React.FC<Props> = () => (
                                 placeholder='Email'
                             />
 
-                            <span className='icon is-small is-left'>
-                                <i className='fa fa-envelope'></i>
+                            <span class='icon is-small is-left'>
+                                <i class='fas fa-envelope'></i>
                             </span>
 
                             <span className='icon is-small is-right'>
@@ -32,6 +33,7 @@ const Login: React.FC<Props> = () => (
                         </p>
                     </label>
                 </div>
+                
                 <div className='field'>
                     <label className='label' htmlFor='password'>
                         <p className='control has-icons-left'>
@@ -43,15 +45,15 @@ const Login: React.FC<Props> = () => (
                                 placeholder='Password'
                             />
 
-                            <span className='icon is-small is-left'>
-                                <i className='fa fa-lock'></i>
+                            <span class='icon is-small is-left'>
+                                <i class='fas fa-lock'></i>
                             </span>
                         </p>
                     </label>
                 </div>
 
                 <div className='field'>
-                    <p className='control'>
+                    <p className='control has-text-centered'>
                         <button type='button' className='button is-success'>
                             Login
                         </button>
