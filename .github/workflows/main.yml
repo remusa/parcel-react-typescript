@@ -3,39 +3,36 @@ name: CI
 on: [push]
 
 jobs:
-  build:
+    build:
+        runs-on: ubuntu-latest
 
-    runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v1
 
-    steps:
-    - uses: actions/checkout@v1
-      with:
-        ref: master
+            - name: Use Node.js 10
+              uses: actions/setup-node@v1
+              with:
+                  node-version: 10.x
 
-    - name: Use Node.js 10
-      uses: actions/setup-node@v1
-      with:
-        node-version: 10.x
-    
-    - name: Cache NPM dependencies
-      uses: actions/cache@v1
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
-        
-    - name: Install NPM dependencies
-      run: npm install
-    
-    - name: Run tests
-      run: npm run test
+            - name: Cache NPM dependencies
+              uses: actions/cache@v1
+              with:
+                  path: ~/.npm
+                  key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                      ${{ runner.os }}-node-
 
-    - name: Build
-      run: npm run build
+            - name: Install NPM dependencies
+              run: npm install
 
-    - name: Deploy to Netlify
-      run: npm run deploy
-        
-    - name: Logs for Netlify
-      uses: bdougie/loglify@v1.0.0
+            - name: Run tests
+              run: npm run test
+
+            - name: Build
+              run: npm run build
+
+            - name: Deploy to Netlify
+              run: npm run deploy
+
+            - name: Logs for Netlify
+              uses: bdougie/loglify@v1.0.0
