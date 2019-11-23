@@ -38,6 +38,7 @@ const Register: React.FC<Props> = () => (
                                 placeholder='Email input'
                                 value='hello@'
                             />
+
                             <span className='icon is-small is-left'>
                                 <i className='fa fa-envelope'></i>
                             </span>
@@ -71,11 +72,10 @@ const Register: React.FC<Props> = () => (
                                 <i className='fa fa-check'></i>
                             </span>
                         </div>
-                        <p className='help is-success'>
-                            This username is available
-                        </p>
+                        <p className='help is-success'>This username is available</p>
                     </label>
                 </div>
+
                 <div className='field'>
                     <label className='label' htmlFor='phone'>
                         Phone
@@ -102,15 +102,6 @@ const Register: React.FC<Props> = () => (
                             </div>
                         </div>
                     </label>
-                </div>
-
-                <div className='field'>
-                    <div className='control'>
-                        <label className='checkbox' htmlFor='terms'>
-                            <input required name='terms' type='checkbox' />
-                            <a href='#'>I accept the terms and conditions</a>
-                        </label>
-                    </div>
                 </div>
 
                 <div className='field is-grouped'>

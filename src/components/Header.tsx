@@ -1,8 +1,8 @@
 import styled from '@emotion/styled'
 import React, { useState } from 'react'
-import Header from 'react-bulma-components/lib/components/header'
+// import Header from 'react-bulma-components/lib/components/header'
 import { Link } from 'react-router-dom'
-import useWindowDimensions from './../hooks/useWindowDimensions'
+import useWindowDimensions from '../hooks/useWindowDimensions'
 
 const HeaderStyles = styled.header`
     grid-area: header;
@@ -27,11 +27,25 @@ const Header: React.FC<Props> = () => {
         setShowHeader(!showHeader)
     }
 
+    const handleKeyPress = e => {
+        if (e.key === 'Enter') {
+            setShowHeader(true)
+        }
+    }
+
     return (
         <HeaderStyles>
-            <nav className='navbar' role='navigation' aria-label='main navigation'>
+            <nav
+                className='navbar'
+                role='navigation'
+                aria-label='main navigation'
+            >
                 <div className='navbar-brand'>
-                    <Link className='navbar-item' href='https://bulma.io' to='/'>
+                    <Link
+                        className='navbar-item'
+                        href='https://bulma.io'
+                        to='/'
+                    >
                         <img
                             src='https://bulma.io/images/bulma-logo.png'
                             alt='logo'
@@ -40,12 +54,15 @@ const Header: React.FC<Props> = () => {
                         />
                     </Link>
                     <a
+                        // type='button'
+                        tabIndex={0}
                         role='button'
                         className='navbar-burger burger'
                         aria-label='menu'
                         aria-expanded='false'
                         data-target='navbarBasicExample'
                         onClick={toggleHeader}
+                        onKeyPress={handleKeyPress}
                     >
                         <span aria-hidden='true'></span>
                         <span aria-hidden='true'></span>
@@ -56,7 +73,9 @@ const Header: React.FC<Props> = () => {
                 <div
                     id='navbarBasicExample'
                     className={
-                        width > MAX_WIDTH || showHeader ? 'navbar-menu is-active' : 'navbar-menu'
+                        width > MAX_WIDTH || showHeader
+                            ? 'navbar-menu is-active'
+                            : 'navbar-menu'
                     }
                 >
                     <div className='navbar-start'>
@@ -67,10 +86,13 @@ const Header: React.FC<Props> = () => {
                                 <Link className='navbar-item' to='/about'>
                                     About
                                 </Link>
+
                                 <Link className='navbar-item' to='/contact'>
                                     Contact
                                 </Link>
+
                                 <hr className='navbar-divider' />
+
                                 <Link className='navbar-item' to='/issues'>
                                     Report an issue
                                 </Link>
@@ -85,7 +107,10 @@ const Header: React.FC<Props> = () => {
                                     Log in
                                 </Link>
 
-                                <Link className='button is-primary' to='/register'>
+                                <Link
+                                    className='button is-primary'
+                                    to='/register'
+                                >
                                     <strong>Sign up</strong>
                                 </Link>
                             </div>

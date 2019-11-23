@@ -21,9 +21,11 @@ const Login: React.FC<Props> = () => (
                                 type='email'
                                 placeholder='Email'
                             />
+
                             <span className='icon is-small is-left'>
                                 <i className='fa fa-envelope'></i>
                             </span>
+
                             <span className='icon is-small is-right'>
                                 <i className='fa fa-check'></i>
                             </span>
@@ -40,12 +42,14 @@ const Login: React.FC<Props> = () => (
                                 type='password'
                                 placeholder='Password'
                             />
+
                             <span className='icon is-small is-left'>
                                 <i className='fa fa-lock'></i>
                             </span>
                         </p>
                     </label>
                 </div>
+
                 <div className='field'>
                     <p className='control'>
                         <button type='button' className='button is-success'>

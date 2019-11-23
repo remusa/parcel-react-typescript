@@ -11,7 +11,9 @@ const Main: React.FC<Props> = () => (
     <MainStyles className='hero is-primary'>
         <div className='hero-body'>
             <div className='container'>
-                <h1 className='title'>React + Parcel Boilerplate</h1>
+                <h1 className='title'>
+                    React + TypeScript + Parcel Boilerplate
+                </h1>
 
                 <h2 className='subtitle'>
                     A simple boilerplate for React apps
