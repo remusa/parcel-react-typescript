@@ -5,8 +5,8 @@
     "main": "index.js",
     "scripts": {
         "start": "parcel public/index.html --open",
-        "build": "cross-env NODE_ENV=production rimraf ./dist && yarn run lint:fix && parcel build public/index.html",
-        "dev": "cross-env NODE_ENV=development yarn run start",
+        "build": "cross-env NODE_ENV=production rimraf ./dist && npm run lint:fix && parcel build public/index.html",
+        "dev": "cross-env NODE_ENV=development npm run start",
         "test": "cross-env NODE_ENV=test jest",
         "test:watch": "cross-env NODE_ENV=test jest --watch --silent",
         "test:coverage": "cross-env NODE_ENV=test jest --coverage --silent",
@@ -14,8 +14,8 @@
         "lint:quiet": "eslint \"src/**/*.{js,jsx,ts,tsx,json,html}\" --quiet",
         "lint:fix": "eslint \"src/**/*.{js,jsx,ts,tsx,json,html}\" --fix && echo 'Lint complete.'",
         "prettify": "pretty-quick && echo 'Format complete.'",
-        "deploy": "yarn run netlify:deploy",
-        "netlify:deploy": "netlify deploy --dir=./build -p -m \"$(git log -1 --pretty=%B)\""
+        "deploy": "npm run netlify:deploy",
+        "netlify:deploy": "netlify deploy --dir=./dist -p -m \"$(git log -1 --pretty=%B)\""
     },
     "dependencies": {
         "@emotion/core": "^10.0.22",
@@ -124,7 +124,7 @@
     },
     "husky": {
         "hooks": {
-            "pre-push": "yarn run lint:fix",
+            "pre-push": "npm run lint:fix",
             "...": "..."
         }
     },

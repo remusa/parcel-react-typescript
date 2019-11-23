@@ -6,8 +6,6 @@
 
 dist/
 build/
-.netlify/
-.firebase/
 
 ### Node ###
 # Logs
@@ -92,3 +90,9 @@ typings/
 .dynamodb/
 
 # End of https://www.gitignore.io/api/node
+
+# Local Netlify folder
+.netlify
+
+# Firebase folder
+.firebase/
