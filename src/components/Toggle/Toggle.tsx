@@ -43,7 +43,7 @@ const ToggleWrapper = styled.span`
         width: 23px;
         height: 23px;
         border-radius: 45px;
-        transition: 0.2s;
+        transition: 0.3s;
         background: #fff;
         box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);
     }
