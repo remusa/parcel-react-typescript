@@ -1,4 +1,6 @@
-const theme = {
+// import { DefaultTheme } from 'styled-components'
+
+export const defaultTheme = {
     colorWhiteDark: 'hsl(0, 0%, 96%)',
     colorWhite: 'hsl(0, 0%, 99%)',
     colorGreyLight: 'hsl(0, 0%, 35%)',
@@ -10,19 +12,19 @@ const theme = {
 }
 
 export const lightTheme = {
-    ...theme,
-    colorBackground: theme.colorWhite,
-    colorHeader: theme.colorGreyDark,
-    colorFont: theme.colorGreyDarker,
-    boxShadow: theme.colorGrey,
-    colorReset: theme.colorGreyLight,
+    ...defaultTheme,
+    colorBackground: defaultTheme.colorWhite,
+    colorHeader: defaultTheme.colorGreyDark,
+    colorFont: defaultTheme.colorGreyDarker,
+    boxShadow: defaultTheme.colorGrey,
+    colorReset: defaultTheme.colorGreyLight,
 }
 
 export const darkTheme = {
-    ...theme,
-    colorBackground: theme.colorGreyDark,
-    colorHeader: theme.colorWhiteDark,
-    colorFont: theme.colorWhite,
-    boxShadow: theme.colorWhite,
-    colorReset: theme.colorWhite,
+    ...defaultTheme,
+    colorBackground: defaultTheme.colorGreyDark,
+    colorHeader: defaultTheme.colorWhiteDark,
+    colorFont: defaultTheme.colorWhite,
+    boxShadow: defaultTheme.colorWhite,
+    colorReset: defaultTheme.colorWhite,
 }
