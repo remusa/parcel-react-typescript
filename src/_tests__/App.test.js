@@ -1,10 +1,9 @@
 import React from 'react'
-import { render, cleanup, fireEvent } from '@testing-library/react'
-// import { render, cleanup, fireEvent, getByRole, waitForElement } from 'test-utils'
+// import { render, cleanup, fireEvent } from '@testing-library/react'
+import { render, cleanup, fireEvent } from 'test-utils'
 import { Router } from 'react-router-dom'
 import { createMemoryHistory } from 'history'
 import App from '../App'
-// import '@testing-library/jest-dom/extend-expect'
 
 afterEach(cleanup)
 
@@ -17,9 +16,7 @@ it('full app rendering/navigating', () => {
         </Router>
     )
 
-    expect(getByTestId('heading')).toHaveTextContent(
-        'React + TypeScript + Parcel Boilerplate'
-    )
+    expect(getByTestId('heading')).toHaveTextContent('React + TypeScript + Parcel Boilerplate')
 
     fireEvent.click(getByText(/log in/i))
     expect(getByTestId('login-page')).toHaveTextContent('Login')
