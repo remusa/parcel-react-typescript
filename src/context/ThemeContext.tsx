@@ -1,15 +1,28 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext } from 'react'
 import { createGlobalStyle, ThemeProvider as StyledProvider } from 'styled-components'
+import useDarkMode from '../hooks/useDarkMode'
 import { darkTheme, lightTheme } from './theme'
 
+// interface IDefaultProps {
+//     theme: DefaultTheme
+// }
+
+// interface IGlobal {
+//     theme: {
+//         colorBackground: string
+//         colorFont: string
+//     }
+// }
+
+// @ts-ignore
 const GlobalStyle = createGlobalStyle`
     /* @import '~react-bulma-components/src/index.sass'; */
-
     @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
     @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
     html {
         box-sizing: border-box;
+        /* font-size: 10px; */
     }
 
     *,
@@ -23,25 +36,33 @@ const GlobalStyle = createGlobalStyle`
         height: 100vh;
         margin: 0;
         padding: 0;
-        background-color: ${props => props.theme.colorBackground};
-        color: ${props => props.theme.colorFont};
+        background-color: ${
+            // @ts-ignore
+            props => props.theme.colorBackground
+        };
+        color: ${
+            // @ts-ignore
+            props => props.theme.colorFont
+        };
         font-family: 'Lato-Regular', 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        /* font-size: 1.5rem; */
+        /* font-size: 2rem; */
         line-height: 2;
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        /* transition: color 0.2s ease-out, background 0.2s ease-out; */
-        transition: all 0.25s linear;
+        /* transition: color 0.3s ease-out, background 0.3s ease-out; */
+        transition: all 0.3s linear;
     }
 
-    h1 {
-        font-weight: bold;
+    body > * {
+        color: ${
+            // @ts-ignore
+            props => props.theme.colorFont
+        };
     }
 
     h1, h2, h3, h4, h5, h6 {
         font-family: 'Montserrat', sans-serif;
-        color: ${props => props.theme.colorHeader};
         cursor: default;
     }
 
@@ -60,8 +81,8 @@ const GlobalStyle = createGlobalStyle`
 `
 
 interface IContext {
-    darkMode: boolean
-    setDarkMode: () => void
+    theme: string
+    toggleTheme: () => void
 }
 
 const ThemeContext = createContext({} as IContext)
@@ -71,20 +92,16 @@ interface IProps {
 }
 
 const ThemeProvider: React.FC<IProps> = ({ children }) => {
-    const [darkMode, setIsDarkMode] = useState<boolean>(
-        JSON.parse(localStorage.getItem('darkMode')) || false
-    )
+    const [theme, toggleTheme, componentMounted] = useDarkMode()
+    const currentTheme = theme === 'light' ? lightTheme : darkTheme
 
-    const useDarkMode = () => {
-        setIsDarkMode(!darkMode)
-        localStorage.setItem('darkMode', JSON.stringify(darkMode))
+    if (!componentMounted) {
+        return <div />
     }
 
-    const computedTheme = darkMode ? lightTheme : darkTheme
-
     return (
-        <ThemeContext.Provider value={{ darkMode, setDarkMode: useDarkMode }}>
-            <StyledProvider theme={computedTheme}>
+        <ThemeContext.Provider value={{ theme, toggleTheme }}>
+            <StyledProvider theme={currentTheme}>
                 <>
                     <GlobalStyle />
                     {children}
