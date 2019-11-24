@@ -68,14 +68,14 @@ interface Props {
 const Toggle: React.FC<Props> = ({
     isOn,
     handleToggle,
-    onColor = '#06D6A0',
-    offColor = '#EF476F',
+    onColor = '#00d1b2',
+    offColor = '#f14668',
 }) => {
     const backgroundColor = isOn ? onColor : offColor
 
     return (
         <ToggleWrapper>
-            <div className='icon'>🌙</div>
+            <div className='icon'>☀️</div>
             <div>
                 <input
                     checked={isOn}
@@ -93,7 +93,7 @@ const Toggle: React.FC<Props> = ({
                     <span className={`react-switch-button`} />
                 </label>
             </div>
-            <div className='icon'>☀️</div>
+            <div className='icon'>🌙</div>
         </ToggleWrapper>
     )
 }
