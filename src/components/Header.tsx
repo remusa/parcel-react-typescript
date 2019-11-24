@@ -2,19 +2,17 @@ import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import useWindowDimensions from '../hooks/useWindowDimensions'
+const MAX_WIDTH: number = 1024
 
 const HeaderStyles = styled.header`
     grid-area: header;
-
-    font-size: 1.6rem;
-    padding: 8px;
+    background-color: transparent;
 `
 
 interface Props {}
 
 const Header: React.FC<Props> = () => {
     const [showHeader, setShowHeader] = useState<boolean>(false)
-    const MAX_WIDTH: number = 1024
     const { width } = useWindowDimensions()
 
     const toggleHeader = () => {
@@ -33,27 +31,18 @@ const Header: React.FC<Props> = () => {
 
     return (
         <HeaderStyles>
-            <nav
-                className='navbar'
-                role='navigation'
-                aria-label='main navigation'
-            >
+            <nav className='navbar ' role='navigation' aria-label='main navigation'>
                 <div className='navbar-brand'>
-                    <NavLink
-                        className='navbar-item'
-                        href='https://bulma.io'
-                        to='/'
-                    >
+                    <NavLink className='navbar-item' href='https://bulma.io' to='/'>
                         <img
                             src='https://bulma.io/images/bulma-logo.png'
                             alt='logo'
-                            width='112'
-                            height='28'
+                            width='60'
+                            height='20'
                         />
                     </NavLink>
 
                     <a
-                        // type='button'
                         tabIndex={0}
                         role='button'
                         className='navbar-burger burger'
@@ -72,47 +61,35 @@ const Header: React.FC<Props> = () => {
                 <div
                     id='navbarBasicExample'
                     className={
-                        width > MAX_WIDTH || showHeader
-                            ? 'navbar-menu is-active'
-                            : 'navbar-menu'
+                        width > MAX_WIDTH || showHeader ? 'navbar-menu is-active' : 'navbar-menu'
                     }
                 >
                     <div className='navbar-start'>
-                        <div className='navbar-item has-dropdown is-hoverable'>
-                            <a className='navbar-NavLink'>More</a>
+                        <div className='navbar-item'>
+                            <NavLink className='navbar-item' to='/about'>
+                                About
+                            </NavLink>
 
-                            <div className='navbar-dropdown'>
-                                <NavLink className='navbar-item' to='/about'>
-                                    About
-                                </NavLink>
+                            <NavLink className='navbar-item' to='/contact'>
+                                Contact
+                            </NavLink>
 
-                                <NavLink className='navbar-item' to='/contact'>
-                                    Contact
-                                </NavLink>
+                            <hr className='navbar-divider' />
 
-                                <hr className='navbar-divider' />
-
-                                <NavLink className='navbar-item' to='/issues'>
-                                    Report an issue
-                                </NavLink>
-                            </div>
+                            <NavLink className='navbar-item' to='/issues'>
+                                Report an issue
+                            </NavLink>
                         </div>
                     </div>
 
                     <div className='navbar-end'>
-                        <div className='navbar-item'>
+                        <div className='navbar-item '>
                             <div className='buttons'>
-                                <NavLink
-                                    className='button is-light'
-                                    to='/login'
-                                >
+                                <NavLink className='button is-light' to='/login'>
                                     Log in
                                 </NavLink>
 
-                                <NavLink
-                                    className='button is-primary'
-                                    to='/register'
-                                >
+                                <NavLink className='button is-primary' to='/register'>
                                     <strong>Sign up</strong>
                                 </NavLink>
                             </div>
