@@ -14,7 +14,6 @@ import { darkTheme, lightTheme } from './theme'
 //     }
 // }
 
-// @ts-ignore
 const GlobalStyle = createGlobalStyle`
     /* @import '~react-bulma-components/src/index.sass'; */
     @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
@@ -22,7 +21,6 @@ const GlobalStyle = createGlobalStyle`
 
     html {
         box-sizing: border-box;
-        /* font-size: 10px; */
     }
 
     *,
