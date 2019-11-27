@@ -19,7 +19,8 @@
                 "jsxSingleQuote": true,
                 "useTabs": false,
                 "jsxBracketSameLine": false,
-                "endOfLine": "auto"
+                "endOfLine": "auto",
+                "bracketSpacing": true
             }
         ],
         "react/jsx-filename-extension": [
@@ -27,7 +28,7 @@
                 "extensions": [".ts", ".tsx"]
             }
         ],
-        "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+        "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
         "no-unused-expression": [true, "allow-tagged-template"]
     }
 }
