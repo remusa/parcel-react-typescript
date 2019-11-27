@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import { ThemeContext } from '../context/ThemeContext'
+import { ThemeContext } from '../context/Theme/ThemeContext'
 import Toggle from './Toggle/Toggle'
 
 const FooterStyles = styled.div`

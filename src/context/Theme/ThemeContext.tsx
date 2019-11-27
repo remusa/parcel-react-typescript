@@ -1,6 +1,6 @@
 import React, { createContext } from 'react'
 import { createGlobalStyle, ThemeProvider as StyledProvider } from 'styled-components'
-import useDarkMode from '../hooks/useDarkMode'
+import useDarkMode from '../../hooks/useDarkMode'
 import { darkTheme, lightTheme } from './theme'
 
 // interface IDefaultProps {
@@ -35,12 +35,12 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
         background-color: ${
-            // @ts-ignore
-            props => props.theme.colorBackground
+          // @ts-ignore
+          props => props.theme.colorBackground
         };
         color: ${
-            // @ts-ignore
-            props => props.theme.colorFont
+          // @ts-ignore
+          props => props.theme.colorFont
         };
         font-family: 'Lato-Regular', 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
         /* font-size: 2rem; */
@@ -54,8 +54,8 @@ const GlobalStyle = createGlobalStyle`
 
     body > * {
         color: ${
-            // @ts-ignore
-            props => props.theme.colorFont
+          // @ts-ignore
+          props => props.theme.colorFont
         };
     }
 
@@ -79,34 +79,34 @@ const GlobalStyle = createGlobalStyle`
 `
 
 interface IContext {
-    theme: string
-    toggleTheme: () => void
+  theme: string
+  toggleTheme: () => void
 }
 
 const ThemeContext = createContext({} as IContext)
 
 interface IProps {
-    children: HTMLElement
+  children: HTMLElement
 }
 
 const ThemeProvider: React.FC<IProps> = ({ children }) => {
-    const [theme, toggleTheme, componentMounted] = useDarkMode()
-    const currentTheme = theme === 'light' ? lightTheme : darkTheme
+  const [theme, toggleTheme, componentMounted] = useDarkMode()
+  const currentTheme = theme === 'light' ? lightTheme : darkTheme
 
-    if (!componentMounted) {
-        return <div />
-    }
+  if (!componentMounted) {
+    return <div />
+  }
 
-    return (
-        <ThemeContext.Provider value={{ theme, toggleTheme }}>
-            <StyledProvider theme={currentTheme}>
-                <>
-                    <GlobalStyle />
-                    {children}
-                </>
-            </StyledProvider>
-        </ThemeContext.Provider>
-    )
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <StyledProvider theme={currentTheme}>
+        <>
+          <GlobalStyle />
+          {children}
+        </>
+      </StyledProvider>
+    </ThemeContext.Provider>
+  )
 }
 
 export { ThemeContext, ThemeProvider, GlobalStyle }
