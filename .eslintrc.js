@@ -1,4 +1,17 @@
-{
+const prettierConfig = {
+    "trailingComma": "es5",
+    "singleQuote": true,
+    "printWidth": 80,
+    "tabWidth": 4,
+    "semi": false,
+    "jsxSingleQuote": true,
+    "useTabs": false,
+    "jsxBracketSameLine": false,
+    "endOfLine": "auto",
+    "bracketSpacing": true
+}
+
+module.exports = {
     "extends": ["wesbos"],
     "settings": {
         "import/resolver": {
@@ -10,18 +23,7 @@
     "rules": {
         "prettier/prettier": [
             "error",
-            {
-                "trailingComma": "es5",
-                "singleQuote": true,
-                "printWidth": 80,
-                "tabWidth": 4,
-                "semi": false,
-                "jsxSingleQuote": true,
-                "useTabs": false,
-                "jsxBracketSameLine": false,
-                "endOfLine": "auto",
-                "bracketSpacing": true
-            }
+            prettierConfig
         ],
         "react/jsx-filename-extension": [
             {
