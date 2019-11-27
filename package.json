@@ -10,16 +10,16 @@
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint:quiet": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --quiet",
     "lint:fix": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --fix && echo 'Lint complete.'",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "tsc --noEmit --watch",
     "purge": "purgecss --css ./src/assets/bulma.min.css --content index.html --out ./src/dist/",
-    "build:rimraf": "rimraf ./dist",
-    "build": "cross-env NODE_ENV=production npm run build:rimraf && parcel build public/index.html",
+    "prebuild": "rimraf ./dist",
+    "build": "cross-env NODE_ENV=production npm run prebuild && parcel build public/index.html",
     "test": "cross-env NODE_ENV=test jest",
     "test:watch": "cross-env NODE_ENV=test jest --watch",
     "test:coverage": "cross-env NODE_ENV=test jest --coverage --silent",
     "deploy": "npm run netlify:deploy",
-    "netlify:deploy": "netlify deploy --dir=./dist -p -m \"$(git log -1 --pretty=%B)\"",
-    "type-check": "tsc --noEmit",
-    "type-check:watch": "tsc --noEmit --watch"
+    "netlify:deploy": "netlify deploy --dir=./dist -p -m \"$(git log -1 --pretty=%B)\""
   },
   "dependencies": {
     "formik": "^2.0.6",
