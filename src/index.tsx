@@ -5,10 +5,10 @@ import App from './App'
 import AppProviders from './context/AppProviders'
 
 ReactDOM.render(
-    <Router>
-        <AppProviders>
-            <App />
-        </AppProviders>
-    </Router>,
-    document.getElementById('root')
+  <Router>
+    <AppProviders>
+      <App />
+    </AppProviders>
+  </Router>,
+  document.getElementById('root')
 )

@@ -2,7 +2,7 @@ import { ErrorMessage, Form, Formik, FormikHelpers } from 'formik'
 import React from 'react'
 import styled from 'styled-components'
 import * as yup from 'yup'
-import { emailValidation, passwordValidation } from '../lib/validationSchemas'
+import { emailValidation, passwordValidation } from '../utils/validationSchemas'
 
 const validationSchema = yup.object().shape({
     email: emailValidation,

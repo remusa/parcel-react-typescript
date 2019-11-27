@@ -7,7 +7,7 @@ import {
     emailValidation,
     passwordValidation,
     usernameValidation,
-} from '../lib/validationSchemas'
+} from '../utils/validationSchemas'
 import { IUser } from './Login'
 
 const validationSchema = yup.object().shape({
