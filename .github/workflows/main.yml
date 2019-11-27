@@ -52,8 +52,11 @@ jobs:
 
       - name: Deploy
         run: npm run deploy
-        env:
-          CI: true
+        with:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
+        # env:
+        #   CI: true
       - name: Logs for Netlify
         uses: bdougie/loglify@v1.0.0
