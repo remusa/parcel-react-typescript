@@ -1,48 +1,58 @@
 name: CI
 
 # on: [push]
+# on: [pull_request]
 on:
-    push:
-        branches:
-            - master
+  push:
+    branches:
+      - master
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
-        steps:
-            - uses: actions/checkout@v1
-              with:
-                  ref: master
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x]
 
-            - name: Use Node.js 12
-              uses: actions/setup-node@v1
-              with:
-                  node-version: 12.x
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          ref: master
 
-            # - name: Cache NPM dependencies
-            #   uses: actions/cache@v1
-            #   id: cache
-            #   with:
-            #       path: node_modules
-            #       key: ${{ runner.OS }}-build-${{ hashFiles('*/**/package-lock.json') }}
-            #       restore-keys: |
-            #           ${{ runner.OS }}-build-${{ env.cache-name }}-
-            #           ${{ runner.OS }}-build-
-            #           ${{ runner.OS }}-
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
 
-            - name: Install NPM dependencies
-              #   if: steps.cache.outputs.cache-hit != 'true'
-              run: npm install
+      # - name: Cache NPM dependencies
+      #   uses: actions/cache@v1
+      #   id: cache
+      #   with:
+      #       path: node_modules
+      #       key: ${{ runner.OS }}-build-${{ hashFiles('*/**/package-lock.json') }}
+      #       restore-keys: |
+      #           ${{ runner.OS }}-build-${{ env.cache-name }}-
+      #           ${{ runner.OS }}-build-
+      #           ${{ runner.OS }}-
 
-            - name: Test
-              run: npm run test
+      - name: Install NPM dependencies
+        #   if: steps.cache.outputs.cache-hit != 'true'
+        run: npm install
 
-            - name: Build
-              run: npm run build
+      - name: Lint
+        run: npm run lint
 
-            - name: Deploy
-              run: npm run deploy
+      - name: Build
+        run: npm run build --if-present
 
-            - name: Logs for Netlify
-              uses: bdougie/loglify@v1.0.0
+      - name: Test
+        run: npm run test
+
+      - name: Deploy
+        run: npm run deploy
+        env:
+          CI: true
+
+      - name: Logs for Netlify
+        uses: bdougie/loglify@v1.0.0

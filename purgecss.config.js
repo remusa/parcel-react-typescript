@@ -1,5 +1,5 @@
 module.exports = {
-    // content: ['**/index.html'],
-    // css: ['public/bulma.min.css'],
-    // whitelist: ['my-very-special-class'],
+  content: ['public/index.html'],
+  css: ['public/bulma.min.css'],
+  whitelist: ['my-very-special-class'],
 }
