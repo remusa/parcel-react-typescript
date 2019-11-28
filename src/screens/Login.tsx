@@ -1,4 +1,4 @@
-import { ErrorMessage, Form, Formik, FormikHelpers } from 'formik'
+import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik'
 import React from 'react'
 import styled from 'styled-components'
 import * as yup from 'yup'
@@ -35,9 +35,8 @@ const Login: React.FC<Props> = () => {
   ) => {
     actions.setSubmitting(true)
     console.log('SUBMITING: ', email, password)
-
     // await signin()
-    await actions.setSubmitting(false)
+    actions.setSubmitting(false)
   }
 
   return (
@@ -51,82 +50,80 @@ const Login: React.FC<Props> = () => {
               handleSubmit(values, actions)
             }}
           >
-            {({ values, dirty, handleChange, handleReset, isSubmitting }) => (
+            {({ values, errors, dirty, handleReset, isSubmitting, isValid }) => (
               <Form>
-                {/* <fieldset disabled={isSubmitting} aria-busy={isSubmitting}> */}
-                <h1 data-testid='login-page'>Login</h1>
+                <fieldset disabled={isSubmitting} aria-busy={isSubmitting}>
+                  <h1 data-testid='login-page'>Login</h1>
 
-                {/* <Error error={error} /> */}
+                  {/* <Error error={error} /> */}
 
-                <div className='field'>
-                  <label className='label' htmlFor='email'>
-                    <p className='control has-icons-left has-icons-right'>
-                      <input
-                        required
-                        className='input'
-                        name='email'
-                        type='email'
-                        placeholder='Email'
-                        value={values.email}
-                        onChange={handleChange}
-                      />
+                  <div className='field'>
+                    <label className='label' htmlFor='email'>
+                      <p className='control has-icons-left has-icons-right'>
+                        <Field
+                          type='email'
+                          name='email'
+                          className='input'
+                          placeholder='Email'
+                          // as={TextField}
+                        />
 
-                      <span className='icon is-small is-left'>
-                        <i className='fas fa-envelope'></i>
-                      </span>
+                        <span className='icon is-small is-left'>
+                          <i className='fas fa-envelope'></i>
+                        </span>
 
-                      <span className='icon is-small is-right'>
-                        <i className='fa fa-check'></i>
-                      </span>
+                        <span className='icon is-small is-right'>
+                          <i className='fa fa-check'></i>
+                        </span>
+                      </p>
+
+                      <ErrorMessage name='email' component='div' className='errorMessage' />
+                    </label>
+                  </div>
+
+                  <div className='field'>
+                    <label className='label' htmlFor='password'>
+                      <p className='control has-icons-left'>
+                        <Field
+                          type='password'
+                          name='password'
+                          className='input'
+                          placeholder='*****'
+                          // as={TextField}
+                        />
+
+                        <span className='icon is-small is-left'>
+                          <i className='fas fa-lock'></i>
+                        </span>
+                      </p>
+
+                      <ErrorMessage name='password' component='div' className='errorMessage' />
+                    </label>
+                  </div>
+
+                  <div className='field'>
+                    <p className='control has-text-centered'>
+                      <button
+                        type='submit'
+                        className='button is-success'
+                        disabled={!dirty || !isValid || isSubmitting}
+                      >
+                        Login
+                      </button>
+
+                      <button
+                        type='button'
+                        className='button is-danger'
+                        disabled={!dirty || isSubmitting}
+                        onClick={handleReset}
+                      >
+                        Reset
+                      </button>
                     </p>
-
-                    <ErrorMessage name='email' component='div' className='errorMessage' />
-                  </label>
-                </div>
-
-                <div className='field'>
-                  <label className='label' htmlFor='password'>
-                    <p className='control has-icons-left'>
-                      <input
-                        required
-                        className='input'
-                        name='password'
-                        type='password'
-                        placeholder='*****'
-                        value={values.password}
-                        onChange={handleChange}
-                      />
-
-                      <span className='icon is-small is-left'>
-                        <i className='fas fa-lock'></i>
-                      </span>
-                    </p>
-
-                    <ErrorMessage name='password' component='div' className='errorMessage' />
-                  </label>
-                </div>
-
-                <div className='field'>
-                  <p className='control has-text-centered'>
-                    <button
-                      type='submit'
-                      className='button is-success'
-                      disabled={!dirty || isSubmitting}
-                    >
-                      Login
-                    </button>
-
-                    <button
-                      type='button'
-                      className='button is-danger'
-                      disabled={!dirty}
-                      onClick={handleReset}
-                    >
-                      Reset
-                    </button>
-                  </p>
-                </div>
-                {/* </fieldset> */}
+                  </div>
+                </fieldset>
+                <pre>{JSON.stringify(values, null, 2)}</pre>
+                <pre>{JSON.stringify(errors, null, 2)}</pre>
               </Form>
             )}
           </Formik>

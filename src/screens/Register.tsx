@@ -1,4 +1,4 @@
-import { ErrorMessage, Form, Formik, FormikHelpers } from 'formik'
+import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik'
 import React from 'react'
 import styled from 'styled-components'
 import * as yup from 'yup'
@@ -48,9 +48,8 @@ const Register: React.FC<Props> = () => {
   ) => {
     actions.setSubmitting(true)
     console.log('SUBMITING: ', email, username, password, confirmPassword)
-
     // await signin()
-    await actions.setSubmitting(false)
+    actions.setSubmitting(false)
   }
 
   return (
@@ -69,126 +68,125 @@ const Register: React.FC<Props> = () => {
               handleSubmit(values, actions)
             }}
           >
-            {({ values, dirty, handleChange, handleReset, isSubmitting }) => (
+            {({ values, errors, dirty, handleReset, isSubmitting, isValid }) => (
               <Form>
-                <h1 data-testid='signup-page'>Sign Up</h1>
+                <fieldset disabled={isSubmitting} aria-busy={isSubmitting}>
+                  <h1 data-testid='signup-page'>Sign Up</h1>
 
-                <div className='field'>
-                  <label className='label' htmlFor='username'>
-                    Username
-                    <p className='control has-icons-left has-icons-right'>
-                      <input
-                        required
-                        className='input'
-                        name='username'
-                        type='text'
-                        placeholder='Username'
-                        value={values.username}
-                        onChange={handleChange}
-                      />
+                  <div className='field'>
+                    <label className='label' htmlFor='username'>
+                      Username
+                      <p className='control has-icons-left has-icons-right'>
+                        <Field
+                          name='username'
+                          className='input'
+                          placeholder='Username'
+                          // as={TextField}
+                        />
 
-                      <span className='icon is-small is-left'>
-                        <i className='fa fa-user'></i>
-                      </span>
+                        <span className='icon is-small is-left'>
+                          <i className='fa fa-user'></i>
+                        </span>
 
-                      <span className='icon is-small is-right'>
-                        <i className='fa fa-check'></i>
-                      </span>
-                    </p>
-                    <ErrorMessage name='username' component='div' className='errorMessage' />
-                  </label>
-                </div>
+                        <span className='icon is-small is-right'>
+                          <i className='fa fa-check'></i>
+                        </span>
+                      </p>
+                      <ErrorMessage name='username' component='div' className='errorMessage' />
+                    </label>
+                  </div>
 
-                <div className='field'>
-                  <label className='label' htmlFor='email'>
-                    Email
-                    <p className='control has-icons-left has-icons-right'>
-                      <input
-                        required
-                        className='input'
-                        name='email'
-                        type='email'
-                        placeholder='Email'
-                        value={values.email}
-                        onChange={handleChange}
-                      />
+                  <div className='field'>
+                    <label className='label' htmlFor='email'>
+                      Email
+                      <p className='control has-icons-left has-icons-right'>
+                        <Field
+                          type='email'
+                          name='email'
+                          className='input'
+                          placeholder='Email'
+                          // as={TextField}
+                        />
 
-                      <span className='icon is-small is-left'>
-                        <i className='fas fa-envelope'></i>
-                      </span>
+                        <span className='icon is-small is-left'>
+                          <i className='fas fa-envelope'></i>
+                        </span>
 
-                      <span className='icon is-small is-right'>
-                        <i className='fa fa-check'></i>
-                      </span>
-                    </p>
-                    <ErrorMessage name='email' component='div' className='errorMessage' />
-                  </label>
-                </div>
+                        <span className='icon is-small is-right'>
+                          <i className='fa fa-check'></i>
+                        </span>
+                      </p>
+                      <ErrorMessage name='email' component='div' className='errorMessage' />
+                    </label>
+                  </div>
 
-                <div className='field'>
-                  <label className='label' htmlFor='password'>
-                    Password
-                    <p className='control has-icons-left'>
-                      <input
-                        required
-                        className='input'
-                        name='password'
-                        type='password'
-                        placeholder='*****'
-                        value={values.password}
-                        onChange={handleChange}
-                      />
+                  <div className='field'>
+                    <label className='label' htmlFor='password'>
+                      Password
+                      <p className='control has-icons-left'>
+                        <Field
+                          type='password'
+                          name='password'
+                          className='input'
+                          placeholder='*****'
+                          // as={TextField}
+                        />
 
-                      <span className='icon is-small is-left'>
-                        <i className='fas fa-lock'></i>
-                      </span>
-                    </p>
-                    <ErrorMessage name='password' component='div' className='errorMessage' />
-                  </label>
-                </div>
+                        <span className='icon is-small is-left'>
+                          <i className='fas fa-lock'></i>
+                        </span>
+                      </p>
+                      <ErrorMessage name='password' component='div' className='errorMessage' />
+                    </label>
+                  </div>
 
-                <div className='field'>
-                  <label className='label' htmlFor='confirmPassword'>
-                    Confirm Password
-                    <p className='control has-icons-left'>
-                      <input
-                        required
-                        className='input'
+                  <div className='field'>
+                    <label className='label' htmlFor='confirmPassword'>
+                      Confirm Password
+                      <p className='control has-icons-left'>
+                        <Field
+                          type='password'
+                          name='confirmPassword'
+                          className='input'
+                          placeholder='*****'
+                          // as={TextField}
+                        />
+
+                        <span className='icon is-small is-left'>
+                          <i className='fas fa-lock'></i>
+                        </span>
+                      </p>
+                      <ErrorMessage
                         name='confirmPassword'
-                        type='password'
-                        placeholder='*****'
-                        value={values.confirmPassword}
-                        onChange={handleChange}
+                        component='div'
+                        className='errorMessage'
                       />
+                    </label>
+                  </div>
 
-                      <span className='icon is-small is-left'>
-                        <i className='fas fa-lock'></i>
-                      </span>
+                  <div className='field'>
+                    <p className='control has-text-centered'>
+                      <button
+                        type='button'
+                        className='button is-link'
+                        disabled={!dirty || !isValid || isSubmitting}
+                      >
+                        Submit
+                      </button>
+
+                      <button
+                        type='button'
+                        className='button is-danger'
+                        disabled={!dirty || isSubmitting}
+                        onClick={handleReset}
+                      >
+                        Reset
+                      </button>
                     </p>
-                    <ErrorMessage name='confirmPassword' component='div' className='errorMessage' />
-                  </label>
-                </div>
-
-                <div className='field'>
-                  <p className='control has-text-centered'>
-                    <button
-                      type='button'
-                      className='button is-link'
-                      disabled={!dirty || isSubmitting}
-                    >
-                      Submit
-                    </button>
-
-                    <button
-                      type='button'
-                      className='button is-danger'
-                      disabled={!dirty}
-                      onClick={handleReset}
-                    >
-                      Reset
-                    </button>
-                  </p>
-                </div>
+                  </div>
+                </fieldset>
+                <pre>{JSON.stringify(values, null, 2)}</pre>
+                <pre>{JSON.stringify(errors, null, 2)}</pre>
               </Form>
             )}
           </Formik>
