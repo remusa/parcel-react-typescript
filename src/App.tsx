@@ -1,17 +1,15 @@
-import 'normalize.css'
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
-import './bulma.min.css'
 import Footer from './components/Footer'
 import Header from './components/Header'
-import './index.scss'
 import Home from './screens/Home'
 import Login from './screens/Login'
 import Register from './screens/Register'
+import './tailwind.min.css'
 
 const LayoutStyles = styled.div`
-  /* transition: color 0.2s ease-out, background 0.2s ease-out; */
+  transition: color 0.2s ease-out, background 0.2s ease-out;
 
   height: 100vh;
   text-align: center;

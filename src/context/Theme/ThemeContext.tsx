@@ -3,19 +3,7 @@ import { createGlobalStyle, ThemeProvider as StyledProvider } from 'styled-compo
 import useDarkMode from '../../hooks/useDarkMode'
 import { darkTheme, lightTheme } from './theme'
 
-// interface IDefaultProps {
-//     theme: DefaultTheme
-// }
-
-// interface IGlobal {
-//     theme: {
-//         colorBackground: string
-//         colorFont: string
-//     }
-// }
-
 const GlobalStyle = createGlobalStyle`
-    /* @import '~react-bulma-components/src/index.sass'; */
     @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
     @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
