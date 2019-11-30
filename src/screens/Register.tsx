@@ -1,5 +1,5 @@
+import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik'
 import React from 'react'
-import useForm from 'react-hook-form'
 import styled from 'styled-components'
 import * as yup from 'yup'
 import {
@@ -24,7 +24,7 @@ const RegisterStyles = styled.section`
     color: ${props => props.theme.colorFont};
   }
 
-  .error-message {
+  .errorMessage {
     color: red;
   }
 `
@@ -37,158 +37,159 @@ interface IRUser extends IUser {
 interface Props {}
 
 const Register: React.FC<Props> = () => {
-  const {
-    register,
-    handleSubmit,
-    errors,
-    watch,
-    getValues,
-    formState: { isSubmitting, dirty, isValid },
-  } = useForm<IRUser>({
-    validationSchema,
-  })
-
-  const onSubmit = async ({ email, username, password, confirmPassword }: IRUser) => {
-    // actions.setSubmitting(true)
+  const handleSubmit = async (
+    { email, username, password, confirmPassword }: IRUser,
+    actions: FormikHelpers<{
+      email: string
+      username: string
+      password: string
+      confirmPassword: string
+    }>
+  ) => {
+    actions.setSubmitting(true)
     console.log('SUBMITING: ', email, username, password, confirmPassword)
     // await signin()
-    // actions.setSubmitting(false)
+    actions.setSubmitting(false)
   }
 
   return (
     <RegisterStyles className='section'>
       <div className='columns'>
         <div className='column is-4 is-offset-4'>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <fieldset disabled={isSubmitting} aria-busy={isSubmitting}>
-              <h1 data-testid='login-page'>Sign Up</h1>
+          <Formik
+            initialValues={{
+              email: '',
+              username: '',
+              password: '',
+              confirmPassword: '',
+            }}
+            validationSchema={validationSchema}
+            onSubmit={(values, actions) => {
+              handleSubmit(values, actions)
+            }}
+          >
+            {({ values, errors, dirty, handleReset, isSubmitting, isValid }) => (
+              <Form>
+                <fieldset disabled={isSubmitting} aria-busy={isSubmitting}>
+                  <h1 data-testid='signup-page'>Sign Up</h1>
 
-              <div className='field'>
-                <label className='label' htmlFor='email'>
-                  Email
-                  <p className='control has-icons-left has-icons-right'>
-                    <input
-                      type='email'
-                      name='email'
-                      className='input'
-                      placeholder='Email'
-                      ref={register}
-                      // as={TextField}
-                    />
+                  <div className='field'>
+                    <label className='label' htmlFor='username'>
+                      Username
+                      <p className='control has-icons-left has-icons-right'>
+                        <Field
+                          name='username'
+                          className='input'
+                          placeholder='Username'
+                          // as={TextField}
+                        />
 
-                    <span className='icon is-small is-left'>
-                      <i className='fas fa-envelope'></i>
-                    </span>
+                        <span className='icon is-small is-left'>
+                          <i className='fa fa-user'></i>
+                        </span>
 
-                    <span className='icon is-small is-right'>
-                      <i className='fa fa-check'></i>
-                    </span>
-                  </p>
-                  {errors.email && <span className='error-message'>{errors.email.message}</span>}
-                </label>
-              </div>
+                        <span className='icon is-small is-right'>
+                          <i className='fa fa-check'></i>
+                        </span>
+                      </p>
+                      <ErrorMessage name='username' component='div' className='errorMessage' />
+                    </label>
+                  </div>
 
-              <div className='field'>
-                <label className='label' htmlFor='username'>
-                  Username
-                  <p className='control has-icons-left has-icons-right'>
-                    <input
-                      name='username'
-                      className='input'
-                      placeholder='Username'
-                      ref={register({ required: true })}
-                      // as={TextField}
-                    />
+                  <div className='field'>
+                    <label className='label' htmlFor='email'>
+                      Email
+                      <p className='control has-icons-left has-icons-right'>
+                        <Field
+                          type='email'
+                          name='email'
+                          className='input'
+                          placeholder='Email'
+                          // as={TextField}
+                        />
 
-                    <span className='icon is-small is-left'>
-                      <i className='fa fa-user'></i>
-                    </span>
+                        <span className='icon is-small is-left'>
+                          <i className='fas fa-envelope'></i>
+                        </span>
 
-                    <span className='icon is-small is-right'>
-                      <i className='fa fa-check'></i>
-                    </span>
-                  </p>
-                  {errors.username && (
-                    <span className='error-message'>{errors.username.message}</span>
-                  )}
-                </label>
-              </div>
+                        <span className='icon is-small is-right'>
+                          <i className='fa fa-check'></i>
+                        </span>
+                      </p>
+                      <ErrorMessage name='email' component='div' className='errorMessage' />
+                    </label>
+                  </div>
 
-              <div className='field'>
-                <label className='label' htmlFor='password'>
-                  Password
-                  <p className='control has-icons-left'>
-                    <input
-                      type='password'
-                      name='password'
-                      className='input'
-                      placeholder='*****'
-                      ref={register}
-                      // as={TextField}
-                    />
+                  <div className='field'>
+                    <label className='label' htmlFor='password'>
+                      Password
+                      <p className='control has-icons-left'>
+                        <Field
+                          type='password'
+                          name='password'
+                          className='input'
+                          placeholder='*****'
+                          // as={TextField}
+                        />
 
-                    <span className='icon is-small is-left'>
-                      <i className='fas fa-lock'></i>
-                    </span>
-                  </p>
-                  {errors.password && (
-                    <span className='error-message'>{errors.password.message}</span>
-                  )}
-                </label>
-              </div>
+                        <span className='icon is-small is-left'>
+                          <i className='fas fa-lock'></i>
+                        </span>
+                      </p>
+                      <ErrorMessage name='password' component='div' className='errorMessage' />
+                    </label>
+                  </div>
 
-              <div className='field'>
-                <label className='label' htmlFor='confirmPassword'>
-                  Confirm Password
-                  <p className='control has-icons-left'>
-                    <input
-                      type='password'
-                      name='confirmPassword'
-                      className='input'
-                      placeholder='*****'
-                      ref={register}
-                      // as={TextField}
-                    />
+                  <div className='field'>
+                    <label className='label' htmlFor='confirmPassword'>
+                      Confirm Password
+                      <p className='control has-icons-left'>
+                        <Field
+                          type='password'
+                          name='confirmPassword'
+                          className='input'
+                          placeholder='*****'
+                          // as={TextField}
+                        />
 
-                    <span className='icon is-small is-left'>
-                      <i className='fas fa-lock'></i>
-                    </span>
-                  </p>
-                  {errors.confirmPassword && (
-                    <span className='error-message'>{errors.confirmPassword.message}</span>
-                  )}
-                </label>
-              </div>
+                        <span className='icon is-small is-left'>
+                          <i className='fas fa-lock'></i>
+                        </span>
+                      </p>
+                      <ErrorMessage
+                        name='confirmPassword'
+                        component='div'
+                        className='errorMessage'
+                      />
+                    </label>
+                  </div>
 
-              <div className='field'>
-                <p className='control has-text-centered'>
-                  <button
-                    type='submit'
-                    className='button is-success'
-                    // disabled={!dirty || !isValid || isSubmitting}
-                  >
-                    Sign Up
-                  </button>
+                  <div className='field'>
+                    <p className='control has-text-centered'>
+                      <button
+                        type='button'
+                        className='button is-link'
+                        disabled={!dirty || !isValid || isSubmitting}
+                      >
+                        Submit
+                      </button>
 
-                  <button
-                    type='reset'
-                    className='button is-danger'
-                    disabled={!dirty || isSubmitting}
-                  >
-                    Reset
-                  </button>
-                </p>
-              </div>
-            </fieldset>
-
-            {/* <div style={{ color: 'red' }}>
-              <pre>
-                {Object.keys(errors).length > 0 && (
-                  <label>Errors: {JSON.stringify(errors, null, 2)}</label>
-                )}
-              </pre>
-            </div> */}
-          </form>
+                      <button
+                        type='button'
+                        className='button is-danger'
+                        disabled={!dirty || isSubmitting}
+                        onClick={handleReset}
+                      >
+                        Reset
+                      </button>
+                    </p>
+                  </div>
+                </fieldset>
+                <pre>{JSON.stringify(values, null, 2)}</pre>
+                <pre>{JSON.stringify(errors, null, 2)}</pre>
+              </Form>
+            )}
+          </Formik>
         </div>
       </div>
     </RegisterStyles>

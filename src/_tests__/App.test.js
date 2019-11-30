@@ -47,7 +47,7 @@ it.skip('rendering a component that uses withRouter', () => {
 
   const { getByTestId } = render(
     <Router history={history}>
-      <div></div>
+      <div />
     </Router>
   )
 
