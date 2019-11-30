@@ -21,8 +21,7 @@
     "test:watch": "cross-env NODE_ENV=test jest --watch",
     "test:coverage": "cross-env NODE_ENV=test jest --coverage --silent",
     "deploy": "npm run netlify:deploy",
-    "netlify:deploy": "netlify deploy --dir=./dist -p -m \"$(git log -1 --pretty=%B)\"",
-    "netlify:deployci": "netlify deploy --dir=./dist -p -m \"$(git log -1 --pretty=%B)\" --auth NETLIFY_AUTH_TOKEN --site NETLIFY_SITE_ID"
+    "netlify:deploy": "netlify deploy --dir=./dist -p -m \"$(git log -1 --pretty=%B)\""
   },
   "dependencies": {
     "formik": "^2.0.6",
