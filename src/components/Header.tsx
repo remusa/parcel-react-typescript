@@ -77,7 +77,7 @@ const Header: React.FC<Props> = () => {
           </div>
 
           <div className='navbar-end'>
-            <div className='navbar-item '>
+            <div className='navbar-item'>
               <div className='buttons'>
                 <NavLink className='button is-light' to='/login'>
                   Log in
