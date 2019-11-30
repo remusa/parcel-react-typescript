@@ -12,7 +12,7 @@ const validationSchema = yup.object().shape({
 const LoginStyles = styled.section`
   text-align: center;
 
-  .errorMessage {
+  .error-message {
     color: red;
   }
 `
@@ -28,10 +28,7 @@ const Login: React.FC<Props> = () => {
   const {
     register,
     handleSubmit,
-    watch,
     errors,
-    reset,
-    getValues,
     formState: { isSubmitting, dirty, isValid },
   } = useForm<IUser>({
     validationSchema,
@@ -50,8 +47,6 @@ const Login: React.FC<Props> = () => {
             <fieldset disabled={isSubmitting} aria-busy={isSubmitting}>
               <h1 data-testid='login-page'>Login</h1>
 
-              {/* <Error error={error} /> */}
-
               <div className='field'>
                 <label className='label' htmlFor='email'>
                   <p className='control has-icons-left has-icons-right'>
@@ -60,7 +55,7 @@ const Login: React.FC<Props> = () => {
                       name='email'
                       className='input'
                       placeholder='Email'
-                      ref={register({ required: true })}
+                      ref={register}
                       // as={TextField}
                     />
 
@@ -72,8 +67,7 @@ const Login: React.FC<Props> = () => {
                       <i className='fa fa-check'></i>
                     </span>
                   </p>
-
-                  {/* <ErrorMessage name='email' component='div' className='errorMessage' /> */}
+                  {errors.email && <span className='error-message'>{errors.email.message}</span>}
                 </label>
               </div>
 
@@ -85,7 +79,7 @@ const Login: React.FC<Props> = () => {
                       name='password'
                       className='input'
                       placeholder='*****'
-                      ref={register({ required: true })}
+                      ref={register}
                       // as={TextField}
                     />
 
@@ -93,8 +87,9 @@ const Login: React.FC<Props> = () => {
                       <i className='fas fa-lock'></i>
                     </span>
                   </p>
-
-                  {/* <ErrorMessage name='password' component='div' className='errorMessage' /> */}
+                  {errors.password && (
+                    <span className='error-message'>{errors.password.message}</span>
+                  )}
                 </label>
               </div>
 
@@ -103,7 +98,7 @@ const Login: React.FC<Props> = () => {
                   <button
                     type='submit'
                     className='button is-success'
-                    disabled={!isValid || isSubmitting}
+                    // disabled={!dirty || !isValid || isSubmitting}
                   >
                     Login
                   </button>
@@ -111,7 +106,7 @@ const Login: React.FC<Props> = () => {
                   <button
                     type='reset'
                     className='button is-danger'
-                    disabled={!dirty || isSubmitting}
+                    // disabled={!dirty || isSubmitting}
                   >
                     Reset
                   </button>
@@ -119,8 +114,13 @@ const Login: React.FC<Props> = () => {
               </div>
             </fieldset>
 
-            <pre>{JSON.stringify(getValues(), null, 2)}</pre>
-            <pre>{JSON.stringify(errors, null, 2)}</pre>
+            {/* <div style={{ color: 'red' }}>
+              <pre>
+                {Object.keys(errors).length > 0 && (
+                  <label>Errors: {JSON.stringify(errors, null, 2)}</label>
+                )}
+              </pre>
+            </div> */}
           </form>
         </div>
       </div>
