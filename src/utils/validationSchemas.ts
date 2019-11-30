@@ -4,7 +4,7 @@ export const usernameValidation = yup
   .string()
   .min(3, 'Username must be at least 3 characters long')
   .max(25, 'Username must be max. 25 characters')
-  .matches(/^[a-z]/, 'Username must start with a letter')
+  .matches(/^[a-zA-Z]/, 'Username must start with a letter')
   .lowercase()
   .trim()
   // .
