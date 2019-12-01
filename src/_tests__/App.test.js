@@ -1,5 +1,4 @@
 import React from 'react'
-// import { render, cleanup, fireEvent } from '@testing-library/react'
 import { render, cleanup, fireEvent } from 'test-utils'
 import { Router } from 'react-router-dom'
 import { createMemoryHistory } from 'history'
