@@ -58,8 +58,10 @@ const Login: React.FC<Props> = () => {
 
                   <div className='field'>
                     <label className='label' htmlFor='email'>
+                      Email
                       <p className='control has-icons-left has-icons-right'>
                         <Field
+                          aria-label='email'
                           type='email'
                           name='email'
                           className='input'
@@ -82,8 +84,10 @@ const Login: React.FC<Props> = () => {
 
                   <div className='field'>
                     <label className='label' htmlFor='password'>
+                      Password
                       <p className='control has-icons-left'>
                         <Field
+                          aria-label='password'
                           type='password'
                           name='password'
                           className='input'
@@ -105,7 +109,7 @@ const Login: React.FC<Props> = () => {
                       <button
                         type='submit'
                         className='button is-success'
-                        disabled={!dirty || !isValid || isSubmitting}
+                        // disabled={!dirty || !isValid || isSubmitting}
                       >
                         Login
                       </button>

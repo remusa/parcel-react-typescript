@@ -19,7 +19,6 @@ const validationSchema = yup.object().shape({
 
 const RegisterStyles = styled.section`
   height: 100%;
-
   label {
     color: ${props => props.theme.colorFont};
   }

@@ -79,7 +79,7 @@ const Toggle: React.FC<Props> = ({
       <div>
         <input
           checked={isOn}
-          defaultChecked={false}
+          // defaultChecked={false}
           onChange={handleToggle}
           className='react-switch-checkbox'
           id='react-switch-new'
