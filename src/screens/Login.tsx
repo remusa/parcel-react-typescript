@@ -52,7 +52,7 @@ const Login: React.FC<Props> = () => {
             {({ values, errors, dirty, handleReset, isSubmitting, isValid }) => (
               <Form>
                 <fieldset disabled={isSubmitting} aria-busy={isSubmitting}>
-                  <h1 data-testid='login-page'>Login</h1>
+                  <h1 data-testid='login-page'>Login to your account</h1>
 
                   {/* <Error error={error} /> */}
 

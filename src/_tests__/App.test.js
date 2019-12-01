@@ -18,7 +18,7 @@ it('full app rendering/navigating', () => {
   expect(getByTestId('heading')).toHaveTextContent('React + TypeScript + Parcel Boilerplate')
 
   fireEvent.click(getByText(/log in/i))
-  expect(getByTestId('login-page')).toHaveTextContent('Login')
+  expect(getByTestId('login-page')).toHaveTextContent('Login to your account')
   // expect(container.innerHTML).toHaveTextContent('Login')
 
   fireEvent.click(getByText(/sign up/i))
