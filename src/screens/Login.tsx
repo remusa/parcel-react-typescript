@@ -11,6 +11,7 @@ const validationSchema = yup.object().shape({
 
 const LoginStyles = styled.section`
   text-align: center;
+
   .errorMessage {
     color: red;
   }
@@ -51,7 +52,7 @@ const Login: React.FC<Props> = () => {
             {({ values, errors, dirty, handleReset, isSubmitting, isValid }) => (
               <Form>
                 <fieldset disabled={isSubmitting} aria-busy={isSubmitting}>
-                  <h1 data-testid='login-page'>Login to your account</h1>
+                  <h1 data-testid='login-page'>Login</h1>
 
                   {/* <Error error={error} /> */}
 
@@ -76,6 +77,7 @@ const Login: React.FC<Props> = () => {
                           <i className='fa fa-check'></i>
                         </span>
                       </p>
+
                       <ErrorMessage name='email' component='div' className='errorMessage' />
                     </label>
                   </div>
@@ -97,6 +99,7 @@ const Login: React.FC<Props> = () => {
                           <i className='fas fa-lock'></i>
                         </span>
                       </p>
+
                       <ErrorMessage name='password' component='div' className='errorMessage' />
                     </label>
                   </div>

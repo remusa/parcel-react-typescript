@@ -11,9 +11,9 @@ const purgecss = require('@fullhuman/postcss-purgecss')({
     './src/**/*.tsx',
     // etc.
   ],
-  // content: ['src/App.tsx'],
+  // content: ['public/index.html', 'src/App.tsx'],
   // css: ['src/index.scss'],
-  // whitelist: ['my-very-special-class'],
+  // whitelist: ['my-class'],
   // whitelistPatterns: [/ais-.*/],
 
   // Include any special characters you're using in this regular expression

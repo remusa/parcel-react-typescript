@@ -22,6 +22,7 @@ const RegisterStyles = styled.section`
   label {
     color: ${props => props.theme.colorFont};
   }
+
   .errorMessage {
     color: red;
   }
