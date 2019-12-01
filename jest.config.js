@@ -7,7 +7,10 @@ module.exports = {
     '^.+\\.(ts|tsx)?$': 'ts-jest', // ts-jest
   },
   // setupFiles: ['<rootDir>/jest.setup.js'],
-  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
+  setupFilesAfterEnv: [
+    '@testing-library/jest-dom/extend-expect',
+    // '@testing-library/cleanup-after-each',
+  ],
   testRegex: TEST_REGEX,
   testPathIgnorePatterns: [
     '<rootDir>/node_modules/',
