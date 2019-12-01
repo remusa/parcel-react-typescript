@@ -14,7 +14,7 @@ interface LanguageProps {
 }
 
 const LanguageProvider: React.FC<LanguageProps> = ({ children, messages }) => {
-  const localeLanguage = navigator.language.split('-')[0]
+  const localeLanguage = navigator.language.split('-')[0] || 'en'
   const [locale, setLocale] = useState(localeLanguage)
   const languageState = { setLocale }
 
