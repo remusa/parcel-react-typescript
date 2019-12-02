@@ -14,7 +14,7 @@ const mockLoginUser = {
   password: '1234567890',
 }
 
-const handleSubmit = jest.fn()
+// const handleSubmit = jest.fn()
 
 it('should submit correct values and login an user', () => {
   const { getByLabelText, getByText } = render(<Login />)
