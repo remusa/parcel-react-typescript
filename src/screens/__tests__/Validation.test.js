@@ -32,7 +32,7 @@ it('should throw errors when validation fails', async () => {
   wait(() => expect(passwordValidationErrors.innerHTML).toBe('Password is required'))
 
   // Reset button is disabled
-  expect(resetBtn).toBeDisabled()
+  wait(expect(resetBtn).toBeDisabled())
 
   // Reset button is enabled
   wait(() => fireEvent.change(email, { target: { value: mockLoginUser.email } }))
