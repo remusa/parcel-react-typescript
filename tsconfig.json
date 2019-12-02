@@ -29,6 +29,8 @@
     "src/**/*.tsx",
     "src/_tests__/App.test.js",
     "src/context/Language/__tests__/Language.test.js",
-    "src/screens/__tests__/Login.test.js"
+    "src/screens/__tests__/Reset.test.js",
+    "src/screens/__tests__/Submit.test.js",
+    "src/screens/__tests__/Validation.test.js"
   ]
 }

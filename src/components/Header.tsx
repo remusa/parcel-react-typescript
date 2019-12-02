@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, RouteComponentProps, withRouter } from 'react-router-dom'
 import styled from 'styled-components'
 import useWindowDimensions from '../hooks/useWindowDimensions'
 
@@ -10,9 +10,9 @@ const HeaderStyles = styled.header`
   background-color: transparent;
 `
 
-interface Props {}
+interface Props extends RouteComponentProps {}
 
-const Header: React.FC<Props> = () => {
+const Header: React.FC<Props> = props => {
   const [showHeader, setShowHeader] = useState<boolean>(false)
   const { width } = useWindowDimensions()
 
@@ -27,6 +27,15 @@ const Header: React.FC<Props> = () => {
   const handleKeyPress = (e: React.KeyboardEvent<HTMLAnchorElement>) => {
     if (e.key === 'Enter') {
       setShowHeader(true)
+    }
+  }
+
+  const handleLogout = () => {
+    const token = localStorage.getItem('token') || null
+
+    if (token) {
+      window.localStorage.removeItem('token')
+      props.history.push('/login')
     }
   }
 
@@ -86,6 +95,10 @@ const Header: React.FC<Props> = () => {
                 <NavLink className='button is-primary' to='/register'>
                   <strong>Sign up</strong>
                 </NavLink>
+
+                <button className='button is-danger' onClick={handleLogout}>
+                  <strong>Logout</strong>
+                </button>
               </div>
             </div>
           </div>
@@ -95,4 +108,4 @@ const Header: React.FC<Props> = () => {
   )
 }
 
-export default Header
+export default withRouter(Header)

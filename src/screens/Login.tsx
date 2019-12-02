@@ -34,6 +34,7 @@ const Login: React.FC<Props> = () => {
   ) => {
     actions.setSubmitting(true)
     console.log('SUBMITING: ', email, password)
+    window.localStorage.setItem('token', JSON.stringify({ email, password }))
     // await signin()
     actions.setSubmitting(false)
   }
@@ -77,8 +78,12 @@ const Login: React.FC<Props> = () => {
                           <i className='fa fa-check'></i>
                         </span>
                       </p>
-
-                      <ErrorMessage name='email' component='div' className='errorMessage' />
+                      <ErrorMessage
+                        data-testid='errors-email'
+                        name='email'
+                        component='div'
+                        className='errorMessage'
+                      />
                     </label>
                   </div>
 
@@ -99,8 +104,12 @@ const Login: React.FC<Props> = () => {
                           <i className='fas fa-lock'></i>
                         </span>
                       </p>
-
-                      <ErrorMessage name='password' component='div' className='errorMessage' />
+                      <ErrorMessage
+                        data-testid='errors-password'
+                        name='password'
+                        component='div'
+                        className='errorMessage'
+                      />
                     </label>
                   </div>
 
