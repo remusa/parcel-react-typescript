@@ -31,6 +31,6 @@ it('should reset values', () => {
 
   // Reset values
   wait(() => fireEvent.click(resetBtn))
-  expect(email).toHaveTextContent('')
-  expect(password).toHaveTextContent('')
+  wait(() => expect(email).toHaveTextContent(''))
+  wait(() => expect(password).toHaveTextContent(''))
 })
