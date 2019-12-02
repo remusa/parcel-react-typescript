@@ -22,14 +22,14 @@ it('should throw errors when validation fails', async () => {
   const resetBtn = getByText('Reset', { exact: true })
 
   // Required email field
-  fireEvent.blur(email)
+  wait(() => fireEvent.blur(email))
   const emailValidationErrors = await findByTestId(`errors-email`)
-  expect(emailValidationErrors.innerHTML).toBe('Email is required')
+  wait(() => expect(emailValidationErrors.innerHTML).toBe('Email is required'))
 
   // Required password field
-  fireEvent.blur(password)
+  wait(() => fireEvent.blur(password))
   const passwordValidationErrors = await findByTestId(`errors-password`)
-  expect(passwordValidationErrors.innerHTML).toBe('Password is required')
+  wait(() => expect(passwordValidationErrors.innerHTML).toBe('Password is required'))
 
   // Reset button is disabled
   expect(resetBtn).toBeDisabled()
