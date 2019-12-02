@@ -24,6 +24,8 @@
     "netlify:deploy": "netlify deploy --dir=./dist -p -m \"$(git log -1 --pretty=%B)\""
   },
   "dependencies": {
+    "@material-ui/core": "^4.7.0",
+    "@material-ui/icons": "^4.5.1",
     "formik": "^2.0.6",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
