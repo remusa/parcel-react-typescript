@@ -2,6 +2,7 @@ import React from 'react'
 import { translationMessages } from './Language/i18n'
 import { LanguageProvider } from './Language/LanguageContext'
 import { ThemeProvider } from './Theme/ThemeContext'
+import { AuthProvider } from './Auth/AuthContext'
 // import { BrowserRouter as Router } from 'react-router-dom'
 // import { HelmetProvider, Helmet } from 'react-helmet-async'
 
@@ -11,7 +12,13 @@ interface Props {
 
 const AppProviders: React.FC<Props> = ({ children }) => (
   <LanguageProvider messages={translationMessages}>
-    <ThemeProvider>{children}</ThemeProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        {/* <UserProvider> */}
+        {children}
+        {/* </UserProvider> */}
+      </AuthProvider>
+    </ThemeProvider>
   </LanguageProvider>
 )
 

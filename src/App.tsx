@@ -1,14 +1,9 @@
 import 'normalize.css'
 import React from 'react'
-import { Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
+import { useUser } from '~context/User/UserContext'
 import './bulma.min.css'
-import Footer from './components/Footer'
-import Header from './components/Header'
 import './index.scss'
-import Home from './screens/Home'
-import Login from './screens/Login'
-import Register from './screens/Register'
 
 const LayoutStyles = styled.div`
   /* transition: color 0.2s ease-out, background 0.2s ease-out; */
@@ -30,33 +25,15 @@ const LayoutStyles = styled.div`
   }
 `
 
-const MainStyles = styled.div`
-  grid-area: main;
-  height: 100%;
-`
+const AuthenticatedApp = React.lazy(() => import('./AuthenticatedApp'))
+const UnauthenticatedApp = React.lazy(() => import('./UnauthenticatedApp'))
 
-const App: React.FC = () => (
-  <LayoutStyles>
-    <Header />
+const App: React.FC = () => {
+  const user = useUser()
 
-    <MainStyles>
-      <Switch>
-        <Route path='/' exact component={Home} />
-        <Route path='/login' exact component={Login} />
-        <Route path='/register' exact component={Register} />
-        <Route
-          path='/'
-          render={() => (
-            <div>
-              <h1 data-testid='not-found'>404 Not Found</h1>
-            </div>
-          )}
-        />
-      </Switch>
-    </MainStyles>
+  const app = user ? <AuthenticatedApp /> : <UnauthenticatedApp />
 
-    <Footer />
-  </LayoutStyles>
-)
+  return <LayoutStyles>{app}</LayoutStyles>
+}
 
 export default App
