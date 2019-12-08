@@ -5,6 +5,7 @@ module.exports = {
   transform: {
     '^.+\\.(js|jsx)?$': 'babel-jest',
     '^.+\\.(ts|tsx)?$': 'ts-jest', // ts-jest
+    // ".+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$": "jest-transform-stub",
   },
   // setupFiles: ['<rootDir>/jest.setup.js'],
   setupFilesAfterEnv: [
@@ -20,9 +21,10 @@ module.exports = {
     '<rootDir>/.netlify/',
     '<rootDir>/.next/',
   ],
-  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
+  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json'],
   moduleNameMapper: {
     '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
+    // '^@/(.*)$': '<rootDir>/src/$1',
   },
   moduleDirectories: ['node_modules', 'utils', 'src', '__dirname'],
   collectCoverage: false,
