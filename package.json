@@ -17,9 +17,9 @@
     "purgecss2": "purgecss --css ./src/assets/bulma.min.css --content index.html --out ./src/dist/",
     "prebuild": "rimraf ./dist",
     "build": "cross-env NODE_ENV=production npm run prebuild && parcel build public/index.html",
-    "test": "cross-env NODE_ENV=test jest",
-    "test:watch": "cross-env NODE_ENV=test jest --watch",
-    "test:coverage": "cross-env NODE_ENV=test jest --coverage --silent",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage --silent",
     "deploy": "npm run netlify:deploy",
     "netlify:deploy": "netlify deploy --dir=./dist -p -m \"$(git log -1 --pretty=%B)\""
   },
