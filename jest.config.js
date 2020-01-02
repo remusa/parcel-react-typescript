@@ -4,13 +4,14 @@ module.exports = {
   preset: 'ts-jest',
   transform: {
     '^.+\\.(js|jsx)?$': 'babel-jest',
-    '^.+\\.(ts|tsx)?$': 'ts-jest', // ts-jest
+    // '^.+\\.(ts|tsx)?$': 'ts-jest',
+    '\\.(ts|tsx)?$': 'ts-jest',
     // ".+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$": "jest-transform-stub",
   },
   // setupFiles: ['<rootDir>/jest.setup.js'],
   setupFilesAfterEnv: [
     '@testing-library/jest-dom/extend-expect',
-    // '@testing-library/cleanup-after-each',
+    '@testing-library/cleanup-after-each',
   ],
   testRegex: TEST_REGEX,
   testPathIgnorePatterns: [
