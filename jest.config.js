@@ -9,10 +9,8 @@ module.exports = {
     // ".+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$": "jest-transform-stub",
   },
   // setupFiles: ['<rootDir>/jest.setup.js'],
-  setupFilesAfterEnv: [
-    '@testing-library/jest-dom/extend-expect',
-    '@testing-library/cleanup-after-each',
-  ],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+  // setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
   testRegex: TEST_REGEX,
   testPathIgnorePatterns: [
     '<rootDir>/node_modules/',
@@ -38,10 +36,10 @@ module.exports = {
   ],
   coverageThreshold: {
     global: {
-      branches: 98,
-      functions: 98,
-      lines: 98,
-      statements: 98,
+      branches: 70,
+      functions: 70,
+      lines: 70,
+      statements: 70,
     },
   },
 }
