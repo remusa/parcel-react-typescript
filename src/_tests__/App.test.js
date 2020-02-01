@@ -1,10 +1,8 @@
 import React from 'react'
-import { render, cleanup, fireEvent } from 'test-utils'
+import { render, fireEvent } from 'test-utils'
 import { Router } from 'react-router-dom'
 import { createMemoryHistory } from 'history'
 import App from '../App'
-
-afterEach(cleanup)
 
 it('full app rendering/navigating', () => {
   const history = createMemoryHistory()
